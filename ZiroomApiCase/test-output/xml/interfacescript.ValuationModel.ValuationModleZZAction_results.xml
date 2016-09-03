@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="testValuationModle"
+           tests="2"
+           failures="1"
+           errors="0"
+           skipped="0"
+           time="40.346">
+  <properties />
+            <testcase name="testZZDemo" time="37.972" classname="interfacescript.ValuationModel.ValuationModleZZAction">
+                <failure type="net.sf.json.JSONException"
+                  message="A JSONObject text must begin with &apos;{&apos; at character 1 of Fatal error: Uncaught exception &apos;Zwp_Db_Exception&apos; with message &apos;SQLSTATE[23000]: Integrity constraint violation: 1048 Column &apos;original_unit_price&apos; cannot be null&apos; in /home/www/s.ziroom.com/lib/zwp/db/statement/pdo.class.php:23
+Stack trace:
+#0 /home/www/s.ziroom.com/lib/zwp/db/statement/pdo.class.php(39): Zwp_Db_Statement_PDO-&gt;handleException(Object(PDOException))
+#1 /home/www/s.ziroom.com/lib/zwp/db/statement/abstract.class.php(205): Zwp_Db_Statement_PDO-&gt;_execute(Array)
+#2 /home/www/s.ziroom.com/lib/zwp/db/table.class.php(285): Zwp_Db_Statement_Abstract-&gt;execute(Array)
+#3 /home/www/s.ziroom.com/lib/zwp/biz/price/entireassess.class.php(484): Zwp_Db_Table-&gt;insert(Array)
+#4 /home/www/s.ziroom.com/modules/pricemode/actions.class.php(1802): Zwp_Biz_Price_Entireassess-&gt;SaveConfig(&apos;zx&apos;)
+#5 [internal function]: Pricemode_Actions-&gt;apiFEntireSaveInfo(19727)
+#6 /home/www/s.ziroom.com/modules/pricemode/actions.class.php(129): call_user_func_array(Array, Array)
+#7 /home/www/s.ziroom.com/lib/zwp/core/controller.class.php(170): Pricem in /home/www/s.ziroom.com/lib/zwp/db/statement/pdo.class.php on line 23"
+              >
+<![CDATA[net.sf.json.JSONException: A JSONObject text must begin with '{' at character 1 of Fatal error: Uncaught exception 'Zwp_Db_Exception' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'original_unit_price' cannot be null' in /home/www/s.ziroom.com/lib/zwp/db/statement/pdo.class.php:23
+Stack trace:
+#0 /home/www/s.ziroom.com/lib/zwp/db/statement/pdo.class.php(39): Zwp_Db_Statement_PDO->handleException(Object(PDOException))
+#1 /home/www/s.ziroom.com/lib/zwp/db/statement/abstract.class.php(205): Zwp_Db_Statement_PDO->_execute(Array)
+#2 /home/www/s.ziroom.com/lib/zwp/db/table.class.php(285): Zwp_Db_Statement_Abstract->execute(Array)
+#3 /home/www/s.ziroom.com/lib/zwp/biz/price/entireassess.class.php(484): Zwp_Db_Table->insert(Array)
+#4 /home/www/s.ziroom.com/modules/pricemode/actions.class.php(1802): Zwp_Biz_Price_Entireassess->SaveConfig('zx')
+#5 [internal function]: Pricemode_Actions->apiFEntireSaveInfo(19727)
+#6 /home/www/s.ziroom.com/modules/pricemode/actions.class.php(129): call_user_func_array(Array, Array)
+#7 /home/www/s.ziroom.com/lib/zwp/core/controller.class.php(170): Pricem in /home/www/s.ziroom.com/lib/zwp/db/statement/pdo.class.php on line 23
+  net.sf.json.util.JSONTokener.syntaxError(JSONTokener.java:499)
+  net.sf.json.JSONObject._fromJSONTokener(JSONObject.java:972)
+  net.sf.json.JSONObject._fromString(JSONObject.java:1201)
+  net.sf.json.JSONObject.fromObject(JSONObject.java:165)
+  net.sf.json.JSONObject.fromObject(JSONObject.java:134)
+  keeper.appScript.Keeper_ValuationModelCommon.decorateInfo(Keeper_ValuationModelCommon.java:880)
+  interfacescript.ValuationModel.ValuationModelFlow.modePriceZZFlow(ValuationModelFlow.java:178)
+  interfacescript.ValuationModel.ValuationModleZZAction.testZZDemo(ValuationModleZZAction.java:77)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:497)
+  org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:86)
+  org.testng.internal.Invoker.invokeMethod(Invoker.java:643)
+  org.testng.internal.Invoker.invokeTestMethod(Invoker.java:820)
+  org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1128)
+  org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:129)
+  org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:112)
+  org.testng.TestRunner.privateRun(TestRunner.java:782)
+  org.testng.TestRunner.run(TestRunner.java:632)
+  org.testng.SuiteRunner.runTest(SuiteRunner.java:366)
+  org.testng.SuiteRunner.runSequentially(SuiteRunner.java:361)
+  org.testng.SuiteRunner.privateRun(SuiteRunner.java:319)
+  org.testng.SuiteRunner.run(SuiteRunner.java:268)
+  org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+  org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+  org.testng.TestNG.runSuitesSequentially(TestNG.java:1244)
+  org.testng.TestNG.runSuitesLocally(TestNG.java:1169)
+  org.testng.TestNG.run(TestNG.java:1064)
+  org.testng.IDEARemoteTestNG.run(IDEARemoteTestNG.java:74)
+  org.testng.RemoteTestNGStarter.main(RemoteTestNGStarter.java:124)
+  sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  java.lang.reflect.Method.invoke(Method.java:497)
+  com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)
+]]>
+      </failure>
+
+          </testcase>
+  
+  
+            <testcase name="testLogin" time="2.374" classname="interfacescript.ValuationModel.ValuationModleZZAction" />
+      
+</testsuite>

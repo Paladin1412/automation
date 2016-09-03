@@ -1,0 +1,26 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suite1" verbose="1">
+
+    <test name="testValuationModle">
+        <classes>
+            <class name="interfacescript.ValuationModel.ValuationModleZZAction">
+                <methods>
+                    <include name="testLogin" description="登录"/>
+                    <include name="testMLogin" description="登录网站"/>
+                    <include name="testGetEntireHirePrice" description="获得整租价格"/>
+                    <include name="testGetStandardID" description="得到standardId"/>
+                    <include name="testSavePriceMode" description="保存数据"/>
+                    <include name="testGetEntireConfigItems" description="获取装修配置信息"/>
+                    <include name="testDecorateInfo" description="装修信息"/>
+                    <include name="testSaveConfig" description="得到出房价"/>
+                    <include name="testSaveConfig1" description="保存信息"/>
+                    <include name="testSaveConfigInfo" description="保存配置信息"/>
+                    <include name="testUpdateAuditStatus" description="更新审核状态"/>
+                    <include name="testAdmitPriceMode" description="保存价格配置信息"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+</suite>

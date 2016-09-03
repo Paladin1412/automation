@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="收房模块">
+
+    <test name="testValuationModle">
+        <classes>
+            <class name="interfacescript.ValuationModel.ValuationModleZZAction">
+                <methods>
+                    <include name="testLogin" description="登录"/>
+                    <include name="testZZDemo" description="整租计价模型"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+</suite>
