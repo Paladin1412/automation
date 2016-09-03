@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Audit">
+
+    <test name="testAudit">
+        <classes>
+            <class name="interfacescript.audit.Audit">
+                <methods>
+                    <include name="testRunTimedJob" description="跑定时Job1"/>
+                    <include name="testLogin" description="登录"/>
+                    <include name="testError" description="登录后页面管家信息"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+</suite>

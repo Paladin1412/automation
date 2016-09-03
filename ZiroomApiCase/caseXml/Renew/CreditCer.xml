@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="信用认证">
+
+    <test name="testCredit">
+        <classes>
+            <class name="interfacescript.renew.CreditCertification">
+                <methods>
+                    <include name="testUserAuthorization" description="用户授权自如信用接口" />
+                    <include name="testCallCountInterface" description="调用算分接口" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+</suite>

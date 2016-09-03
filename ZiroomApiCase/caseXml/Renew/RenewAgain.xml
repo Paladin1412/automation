@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="续约">
+
+    <test name="管家端重新发起流程">
+        <classes>
+            <class name="interfacescript.renew.RenewAgain">
+                <methods>
+                    <include name="getContractInfo" description="续约详情" />
+                    <!--<include name="getRenewContractInfo" description="获取合同信息" />-->
+                    <include name="getRenewPayInfo" description="生成续约3" />
+                    <include name="renewContractAgain" description="重新发起续约" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="APP签约">
+        <classes>
+            <class name="interfacescript.renew.Renew"><!-- 新签 -->
+                <methods>
+                    <include name="testLogin" description="登陆" />
+                    <include name="testGetContractList" description="获取合同列表" />
+                    <include name="testGetContractInfo" description="获取合同详情" />
+                    <include name="testCheckHasRenewContract" description="检查合同是否有续约合同" />
+                    <include name="testGetRenewContractInfo" description="获取续约合同详情" />
+                    <include name="testGet_ra_config" description="确认合同1" />
+                    <include name="testClauseSelect" description="确认合同2" />
+                    <include name="testGetFirstPayInfo" description="获取首次支付信息" />
+                    <include name="testGetRenewActivity" description="确认生成续约Activity" />
+                    <include name="testGet_ra_sign_info" description="短信验证码校验1" />
+                    <include name="testSet_ra_signature" description="短信验证码检验2" />
+                    <include name="testConfirmRenewContract" description="确认续签合同" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
