@@ -13,6 +13,7 @@
         <module>ZiroomApiCase</module>
         <module>AmsScript</module>
         <module>RentAppScript</module>
+        <module>ZoZiroomScript</module>
     </modules>
 
     <dependencies>
