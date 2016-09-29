@@ -38,7 +38,7 @@
     <build>
         <resources>
             <resource>
-                <directory>src/main/resouces</directory>
+                <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.properties</include>
                 </includes>
@@ -59,19 +59,19 @@
                 <version>2.7.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <!-- <suiteXmlFile>caseXml/initialize/initialize.xml</suiteXmlFile> -->
+                         <suiteXmlFile>caseXml/harvestmodule/FlowFZ.xml</suiteXmlFile>
                         <!--<suiteXmlFile>caseXml/zrpd/init.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>caseXml/zrpd/ConfigFlowManage.xml</suiteXmlFile>-->
                         <!--  <suiteXmlFile>caseXml/harvesthouse/HarvestHouse.xml</suiteXmlFile> -->
-                        <suiteXmlFile>${RenewType}</suiteXmlFile>
-                        <suiteXmlFile>${Resign}</suiteXmlFile>
-                        <suiteXmlFile>${Login}</suiteXmlFile><!-- app登陆 -->
-                        <suiteXmlFile>${JR_FindHouse}</suiteXmlFile><!-- 合租搜房 -->
-                        <suiteXmlFile>${JR_NewSign}</suiteXmlFile> <!-- 合租新签 -->
-                        <suiteXmlFile>${WR_NewSign}</suiteXmlFile>  <!-- 整租新签 -->
-                        <suiteXmlFile>${newSignDelivery}</suiteXmlFile>     <!-- 物业交割 -->
-                        <suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile><!-- 收房模块分租 -->
-                        <suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile><!-- 收房模块整租 -->
+                        <!--<suiteXmlFile>${RenewType}</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${Resign}</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${Login}</suiteXmlFile>&lt;!&ndash; app登陆 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${JR_FindHouse}</suiteXmlFile>&lt;!&ndash; 合租搜房 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${JR_NewSign}</suiteXmlFile> &lt;!&ndash; 合租新签 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${WR_NewSign}</suiteXmlFile>  &lt;!&ndash; 整租新签 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${newSignDelivery}</suiteXmlFile>     &lt;!&ndash; 物业交割 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile>&lt;!&ndash; 收房模块分租 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile>&lt;!&ndash; 收房模块整租 &ndash;&gt;-->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -98,5 +98,24 @@
             </plugin>
         </plugins>
     </build>
-
-</project>
+    <!--<build>-->
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<includes>-->
+                    <!--<include>**/*.properties</include>-->
+                <!--</includes>-->
+            <!--</resource>-->
+        <!--</resources>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<source>1.7</source>-->
+                    <!--<target>1.7</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+        <!--</plugins>-->
+    <!--</build>-->
+<!--</project>-->
