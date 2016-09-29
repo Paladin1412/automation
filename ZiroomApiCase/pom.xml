@@ -58,7 +58,7 @@
                 <version>2.7.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                         <suiteXmlFile>caseXml/harvestmodule/FlowFZ.xml</suiteXmlFile>
+                         <!--<suiteXmlFile>caseXml/harvestmodule/FlowFZ.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>caseXml/zrpd/init.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>caseXml/zrpd/ConfigFlowManage.xml</suiteXmlFile>-->
                         <!--  <suiteXmlFile>caseXml/harvesthouse/HarvestHouse.xml</suiteXmlFile> -->
