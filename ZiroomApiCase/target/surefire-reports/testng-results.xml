@@ -5,24 +5,24 @@
       <![CDATA[http://interfaces.t.ziroom.com/index.php?_p=api_mobile&_a=login_normal]]>
     </line>
     <line>
-      <![CDATA[{uid=20186677, password=123456, login_name=20186677, appType=1, sign=6f4477112bc1cecbfd54cef5c76cc3d6, user_account=20186677, timestamp=1475154773}]]>
+      <![CDATA[{uid=20186677, password=123456, login_name=20186677, appType=1, sign=26d62a253c7e70f461fff8643dc5f77a, user_account=20186677, timestamp=1475154882}]]>
     </line>
     <line>
       <![CDATA[{"status":"success","error_code":0,"error_message":"","data":{"city_code":"110000","login_name":"20186677","uid":"20186677","stewardType":"综合管家"}}]]>
     </line>
   </reporter-output>
-  <suite name="收房业务" duration-ms="1591" started-at="2016-09-29T13:12:52Z" finished-at="2016-09-29T13:12:53Z">
+  <suite name="收房业务" duration-ms="1590" started-at="2016-09-29T13:14:41Z" finished-at="2016-09-29T13:14:42Z">
     <groups>
     </groups>
-    <test name="testLogin" duration-ms="1591" started-at="2016-09-29T13:12:52Z" finished-at="2016-09-29T13:12:53Z">
+    <test name="testLogin" duration-ms="1590" started-at="2016-09-29T13:14:41Z" finished-at="2016-09-29T13:14:42Z">
       <class name="keeper.init.Keeper_LoginS">
-        <test-method status="PASS" signature="login()[pri:0, instance:keeper.init.Keeper_LoginS@704a52ec]" name="login" duration-ms="1574" started-at="2016-09-29T21:12:52Z" description="登陆" finished-at="2016-09-29T21:12:53Z">
+        <test-method status="PASS" signature="login()[pri:0, instance:keeper.init.Keeper_LoginS@5025a98f]" name="login" duration-ms="1575" started-at="2016-09-29T21:14:41Z" description="登陆" finished-at="2016-09-29T21:14:42Z">
           <reporter-output>
             <line>
               <![CDATA[http://interfaces.t.ziroom.com/index.php?_p=api_mobile&_a=login_normal]]>
             </line>
             <line>
-              <![CDATA[{uid=20186677, password=123456, login_name=20186677, appType=1, sign=6f4477112bc1cecbfd54cef5c76cc3d6, user_account=20186677, timestamp=1475154773}]]>
+              <![CDATA[{uid=20186677, password=123456, login_name=20186677, appType=1, sign=26d62a253c7e70f461fff8643dc5f77a, user_account=20186677, timestamp=1475154882}]]>
             </line>
             <line>
               <![CDATA[{"status":"success","error_code":0,"error_message":"","data":{"city_code":"110000","login_name":"20186677","uid":"20186677","stewardType":"综合管家"}}]]>
