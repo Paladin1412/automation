@@ -4,7 +4,7 @@
 
     <test name="testCredit">
         <classes>
-            <class name="interfacescript.renew.CreditCertification">
+            <class name="apprent.renew.CreditCertification">
                 <methods>
                     <include name="testUserAuthorization" description="用户授权自如信用接口" />
                     <include name="testCallCountInterface" description="调用算分接口" />

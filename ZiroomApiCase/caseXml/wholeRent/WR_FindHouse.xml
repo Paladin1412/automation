@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="整租">
+	<test name="搜房找房">
+		<classes>
+			<class name="apprent/wholerent/FindHouse"><!-- 整租找房 -->
+				<methods>
+				    <include name="fh_MoreFindHouse" description="更多条件找房" />	
+				</methods>
+			</class>
+			
+		</classes>
+	</test>
+</suite>
+

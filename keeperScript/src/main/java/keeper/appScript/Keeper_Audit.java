@@ -28,7 +28,7 @@ public class Keeper_Audit {
      * 登录
      */
     public Map s_LoginKeeper(String httpUrl) {
-
+        Reporter.log(httpUrl);
         Map<String, String> response = hRequest.getGetStrReturn(httpUrl);
 
         Reporter.log(response.toString());
@@ -48,6 +48,7 @@ public class Keeper_Audit {
      * 获取新签管理列表
      */
     public Map s_newSignList(String httpUrl) {
+        Reporter.log(httpUrl);
 
         Map<String, String> response = hRequest.getGetStrReturn(httpUrl);
 
@@ -91,18 +92,21 @@ public class Keeper_Audit {
      * 修改管家信息
      */
     public JSONObject s_getGuanjiaInfo(String httpUrl) {
+        Reporter.log(httpUrl);
+
         HashMap<String, String> map = new HashMap<String, String>();
-        map.put("contract_code",KeeperGlobalParas.oldContract);
-        map.put("user_code",KeeperGlobalParas.serviceUserName);
-        map.put("type","edit_dianjingli" );
-        map.put("edit_type","suoshu_guanjia");
+        map.put("contract_code", KeeperGlobalParas.oldContract);
+        map.put("user_code", KeeperGlobalParas.serviceUserName);
+        map.put("type", "edit_dianjingli");
+        map.put("edit_type", "suoshu_guanjia");
 
         JSONObject responseJson = hRequest.getPostReturnValue(httpUrl, map);
 
-        if (responseJson==null) {
+
+        if (responseJson == null) {
             logA.info("s_getGuanjiaInfo服务器返回值------>>>>>为空");
         } else {
-//            logA.info("s_newSignList返回值" + htmlStr);
+            logA.info("s_newSignList返回值" + responseJson);
         }
         return responseJson;
     }

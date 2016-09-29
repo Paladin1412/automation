@@ -1,6 +1,5 @@
 package keeper.confManagement.commonMethods;
 
-
 import com.ziroom.httpclient.HttpClientUtils;
 import com.ziroom.httpclient.JsonValidator;
 import net.sf.json.JSONObject;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="初始化">
+	<test name="自如客登陆">
+		<classes>
+			<class name="apprent.init.Rent_Login">
+				<methods>
+					<include name="Login" description="登陆" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="管家登陆">
+		<classes>
+			<class name="keeper.init.Keeper_Login">
+				<methods>
+					<include name="login" description="登陆" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
+

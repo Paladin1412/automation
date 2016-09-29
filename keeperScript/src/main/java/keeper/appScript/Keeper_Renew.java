@@ -1,6 +1,5 @@
 package keeper.appScript;
 
-import com.ziroom.httpclient.HttpClientUtils;
 import com.ziroom.utils.CommonFunction;
 import keeper.confManagement.commonMethods.HttpRequest;
 import keeper.confManagement.commonMethods.KeeperGlobalParas;
@@ -22,7 +21,7 @@ import static keeper.confManagement.commonMethods.RenewFunCommon.*;
 
 public class Keeper_Renew {
 	private static final Logger log = Logger.getLogger(Keeper_Renew.class);
-	HttpClientUtils hcu = new HttpClientUtils();
+	
 	HttpRequest hRequest = new HttpRequest();
 	/***
 	 * 获取续约详情列表
@@ -30,6 +29,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getCanRenewContract(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		StackTraceElement ste = (new Throwable()).getStackTrace()[1];
 		String classAndMethod = (ste.getClassName() + "->" + ste.getMethodName());
@@ -93,6 +94,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getCanRenewContractSP(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -138,13 +141,15 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_checkContractCanRenew(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
 		//
 		map.put("keeperCode", KeeperGlobalParas.test1);
 		map.put("userId", KeeperGlobalParas.test1);
-		map.put("cityCode", KeeperGlobalParas.city_code );
+		map.put("cityCode",KeeperGlobalParas.city_code );
 		map.put("appId", KeeperGlobalParas.appid);
 		map.put("imei", KeeperGlobalParas.imei);
 		map.put("osType", KeeperGlobalParas.osType);
@@ -178,6 +183,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getContractInfo(String requestUrl) {
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -236,6 +243,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getRenewType(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -277,6 +286,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getRenewPaymentList(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -322,6 +333,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getRenewPayInfo(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -371,7 +384,7 @@ public class Keeper_Renew {
 		//log.info(GlobalParameter.period);
 		//log.info(responseData);
 
-		renewWfDataDiff(KeeperGlobalParas.renewStartDate, KeeperGlobalParas.renewEndDate);
+		renewWfDataDiff(KeeperGlobalParas.renewStartDate,KeeperGlobalParas.renewEndDate);
 //		log.info(GlobalParameter.periodday);
 
 
@@ -391,6 +404,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_renewContract(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -447,6 +462,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_getRenewContractInfo(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -546,6 +563,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_renewContractAgain(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -603,6 +622,8 @@ public class Keeper_Renew {
 	 * @return
 	 */
 	public JSONObject s_closeRenewContract(String requestUrl){
+		Reporter.log(requestUrl);
+
 		String timestamp = CommonFunction.getTimeStampOf13();
 		String uuid = KeeperGlobalParas.appid + timestamp;
 		HashMap<String, String> map = new HashMap<String, String>();

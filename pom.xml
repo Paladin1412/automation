@@ -11,6 +11,8 @@
     <modules>
         <module>keeperScript</module>
         <module>ZiroomApiCase</module>
+        <module>AmsScript</module>
+        <module>RentAppScript</module>
     </modules>
 
     <dependencies>

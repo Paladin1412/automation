@@ -4,7 +4,7 @@
 
     <test name="管家端重新发起流程">
         <classes>
-            <class name="interfacescript.renew.RenewAgain">
+            <class name="apprent.renew.RenewAgain">
                 <methods>
                     <include name="getContractInfo" description="续约详情" />
                     <!--<include name="getRenewContractInfo" description="获取合同信息" />-->
@@ -16,7 +16,7 @@
     </test>
     <test name="APP签约">
         <classes>
-            <class name="interfacescript.renew.Renew"><!-- 新签 -->
+            <class name="apprent.renew.Renew"><!-- 新签 -->
                 <methods>
                     <include name="testLogin" description="登陆" />
                     <include name="testGetContractList" description="获取合同列表" />

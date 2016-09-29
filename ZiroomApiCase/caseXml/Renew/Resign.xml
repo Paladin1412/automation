@@ -3,7 +3,7 @@
 <suite name="合租流程">
 	<test name="登陆">
 		<classes>
-			<class name="interfacescript.init.Keeper_Login">
+			<class name="apprent.init.Rent_Login">
 				<methods>
 					<include name="login" description="登陆" />
 				</methods>
@@ -12,7 +12,7 @@
 	</test>
 	<test name="续签流程">
 		<classes>
-			<class name="interfacescript.renew.Resign">
+			<class name="apprent.renew.Resign">
 				<methods>
 					<!--<include name="getList" description="获取待续约列表" />-->
 					<include name="login" description="登陆" />	
@@ -29,7 +29,7 @@
 	</test>
 	<test name="APP签约">
 		<classes>
-			<class name="interfacescript.renew.Renew">
+			<class name="apprent.renew.Renew">
 				<methods>
 					<include name="testLogin" description="登陆" />
 					<include name="testGetContractList" description="获取合同列表" />
@@ -49,7 +49,7 @@
 	</test>
 	<test name="关闭续约订单">
 		<classes>
-			<class name="interfacescript.renew.Resign">
+			<class name="apprent.renew.Resign">
 				<methods>
 					<include name="closeRenewContract" description="关闭续约" />
 				</methods>

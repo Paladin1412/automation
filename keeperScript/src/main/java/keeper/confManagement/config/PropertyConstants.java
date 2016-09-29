@@ -20,9 +20,15 @@ public class PropertyConstants {
 	public static String MODEPRICE_DOMAIN = PropertiesUtil.getPropValAsString(dnFile,"MODEPRICE_DOMAIN");
 	public static String CRM_LOGIN_DOMAIN = PropertiesUtil.getPropValAsString(dnFile,"CRM_LOGIN_DOMAIN");
 	public static String PHP_CRM_DOMAIN = PropertiesUtil.getPropValAsString(dnFile,"PHP_CRM_DOMAIN");
+	public static String EHR_DOMAIN = PropertiesUtil.getPropValAsString(dnFile,"EHR_DOMAIN");
 
 	//信用系统mysql登录
+	public static String CREDIT_MYSQL_ADDRESS = PropertiesUtil.getPropValAsString(dbFile,"CREDIT_MYSQL_ADDRESS") ;
+	public static String CREDIT__PORT = PropertiesUtil.getPropValAsString(dbFile,"CREDIT__PORT") ;
+	public static String CREDIT_MYSQL_USERNAME = PropertiesUtil.getPropValAsString(dbFile,"CREDIT_MYSQL_USERNAME") ;
+	public static String CREDIT_MYSQL_PASSWORD = PropertiesUtil.getPropValAsString(dbFile,"CREDIT_MYSQL_PASSWORD") ;
 	public static String CREDIT_DATANAME = PropertiesUtil.getPropValAsString(dbFile,"CREDIT_DATANAME") ;
+
 	// mysql 数据库
 	public static String MYSQL_ADDRESS = PropertiesUtil.getPropValAsString(dbFile,"MYSQL_ADDRESS");
 	public static String MYSQL_ACCOUNT = PropertiesUtil.getPropValAsString(dbFile,"MYSQL_ACCOUNT");
@@ -43,7 +49,7 @@ public class PropertyConstants {
 
 
 
-
+	public static final String getUserDetail = "/ehr/getUserDetail.action";
 
 
 }

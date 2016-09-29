@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="合租">
+	<test name="搜房找房">
+		<classes>
+			<class name="apprent.joinrent.FindHouse"><!-- 找房 -->
+				<methods>
+				    <include name="fh_getSubway" description="位置找房获取地铁线" />
+					<include name="fh_getBizCircle" description="位置找房获取商圈（区）" />
+					<include name="fh_searchFindByBizcircle" description="位置找房按照商圈查找" />
+					<!-- <include name="fh_findHouse" description="点击菜单找房" />
+					<include name="fh_searchHouseBykeyWord" description="按照关键字查找" />
+					<include name="fh_getSubway" description="位置找房获取地铁线" />
+					<include name="fh_getBizCircle" description="位置找房获取商圈（区）" />
+					<include name="fh_searchFindBySubway" description="位置找房按照地铁站查找" />
+					<include name="fh_searchFindByBizcircle" description="位置找房按照商圈查找" />
+					<include name="fh_SuggestFindHouse" description="位置找房按照地铁站查找" />
+					<include name="fh_commutingFindHouseByWalk" description="步行通勤找房" />
+					<include name="fh_commutingFindHouseByCar" description="驾车通勤找房" />
+					<include name="fh_commutingFindHouseByBus" description="公交通勤找房" /> -->
+				</methods>
+			</class>	
+		</classes>
+	</test>
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter"/>
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+	</listeners>
+</suite>
+

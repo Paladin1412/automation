@@ -18,6 +18,7 @@ import java.util.Date;
 public class RenewFunCommon {
 
 
+
     /**
      * 系统时间和截止日期的时间差
      */
@@ -159,19 +160,19 @@ public class RenewFunCommon {
         float period = Float.valueOf(KeeperGlobalParas.periodday);
         if (paymentType == 6){
             KeeperGlobalParas.paymentDiscount = 0.85f;
-            System.out.println("paymentDiscount"+KeeperGlobalParas.paymentDiscount);
+            System.out.println("paymentDiscount"+ KeeperGlobalParas.paymentDiscount);
         }else if (paymentType == 12){
             KeeperGlobalParas.paymentDiscount = 0.7f;
-            System.out.println("paymentDiscount"+KeeperGlobalParas.paymentDiscount);
+            System.out.println("paymentDiscount"+ KeeperGlobalParas.paymentDiscount);
         }else if (paymentType == 99 && period > 6.0 ){
             KeeperGlobalParas.paymentDiscount = 0.7f;
-            System.out.println("paymentDiscount"+KeeperGlobalParas.paymentDiscount);
+            System.out.println("paymentDiscount"+ KeeperGlobalParas.paymentDiscount);
         }else if (paymentType == 99 && period <= 6.0&&period >3.0 ){
             KeeperGlobalParas.paymentDiscount = 0.85f;
-            System.out.println("paymentDiscount"+KeeperGlobalParas.paymentDiscount);
+            System.out.println("paymentDiscount"+ KeeperGlobalParas.paymentDiscount);
         }else {
             KeeperGlobalParas.paymentDiscount = 1;
-            System.out.println("paymentDiscount"+KeeperGlobalParas.paymentDiscount);
+            System.out.println("paymentDiscount"+ KeeperGlobalParas.paymentDiscount);
         }
     }
     /**
@@ -179,7 +180,7 @@ public class RenewFunCommon {
      *
      */
     public static void liveTimeDiscount(){
-        String a =KeeperGlobalParas.liveTime.substring(0,1);
+        String a = KeeperGlobalParas.liveTime.substring(0,1);
         String renewtype = "dx";
         String renew = KeeperGlobalParas.renewType;
         float liveTime = Float.valueOf(a);
@@ -192,7 +193,7 @@ public class RenewFunCommon {
         }else {
             KeeperGlobalParas.liveTimeDiscount = 1;
         }
-        System.out.println("liveTimeDiscount"+KeeperGlobalParas.liveTimeDiscount);
+        System.out.println("liveTimeDiscount"+ KeeperGlobalParas.liveTimeDiscount);
     }
     /**
      * 提前续约折扣  1-（原合同到期日期－续约生成支付日期）X0.01
@@ -277,18 +278,27 @@ public class RenewFunCommon {
         KeeperGlobalParas.testCountMoney = String.valueOf(count);
     }
 
-
+//    /**
+//     * 更新mysql数据库中数据
+//     *
+//     * @paramString
+//     *            sql : 查询语句
+//     * @Elaine
+//     */
+//    public static void updateMysqlData(String sql) {
+//        String mysqlUrl = ConnectDatabase.JDBC + PropertyConstants.MYSQL_ADDRESS + ":" + PropertyConstants.MYSQL_PORT
+//                + "/" + PropertyConstants.MYSQL_APPZIROOM;
+//        updateData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.MYSQL_USERNAME, PropertyConstants.MYSQL_PASSWORD,
+//                sql);
+//    }
     /**
-     * 更新mysql数据库中数据
-     *
-     * @paramString
-     *            sql : 查询语句
-     * @Elaine
+     * 更新信用系统数据库中数据
+     * wujing
      */
-    public static void updateMysqlData(String sql) {
-        String mysqlUrl = ConnectDatabase.JDBC + PropertyConstants.MYSQL_ADDRESS + ":" + PropertyConstants.MYSQL_PORT
-                + "/" + PropertyConstants.CREDIT_DATANAME;
-        updateData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.MYSQL_USERNAME, PropertyConstants.MYSQL_PASSWORD,
+    public static void updateCreditMysqlData(String sql) {
+        String mysqlUrl = ConnectDatabase.JDBC + PropertyConstants.CREDIT_MYSQL_ADDRESS + ":" + PropertyConstants.CREDIT__PORT + "/" + PropertyConstants.CREDIT_DATANAME;
+        System.out.print(mysqlUrl);
+        updateData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.CREDIT_MYSQL_USERNAME, PropertyConstants.CREDIT_MYSQL_PASSWORD,
                 sql);
     }
     /**
@@ -298,12 +308,26 @@ public class RenewFunCommon {
      *            sql : 查询语句
      * @Elaine
      */
-    public static void selectMysqlData(String sql) {
-        String mysqlUrl = ConnectDatabase.JDBC + PropertyConstants.MYSQL_ADDRESS + ":" + PropertyConstants.MYSQL_PORT
-                + "/" + PropertyConstants.CREDIT_DATANAME;
-        selectData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.MYSQL_USERNAME, PropertyConstants.MYSQL_PASSWORD,
+    public static void selectCreditMysqlData(String sql) {
+        String mysqlUrl = ConnectDatabase.JDBC + PropertyConstants.CREDIT_MYSQL_ADDRESS + ":" + PropertyConstants.CREDIT__PORT+ "/" + PropertyConstants.CREDIT_DATANAME;
+        selectData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.CREDIT_MYSQL_USERNAME, PropertyConstants.CREDIT_MYSQL_PASSWORD,
                 sql);
     }
+
+//    /**
+//     * 查询mysql数据库中数据
+//     *
+//     * @paramString
+//     *            sql : 查询语句
+//     * @Elaine
+//     */
+//    public static void selectMysqlData(String sql) {
+//        String mysqlUrl = ConnectDatabase.JDBC + PropertyConstants.MYSQL_ADDRESS + ":" + PropertyConstants.MYSQL_PORT
+//                + "/" + PropertyConstants.CREDIT_DATANAME;
+//        selectData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.MYSQL_USERNAME, PropertyConstants.MYSQL_PASSWORD,
+//                sql);
+//    }
+
     /**
      * 查询数据库
      *
@@ -346,7 +370,7 @@ public class RenewFunCommon {
 
         //获取KeeperGlobalParas.uid在数据库中的值
         String selectsql = "select * from tb_user_identity where phone = '" + KeeperGlobalParas.customerPhone + "'";
-        RenewFunCommon.selectMysqlData(selectsql);
+        RenewFunCommon.selectCreditMysqlData(selectsql);
     }
     /**
      * 更新数据库
@@ -373,5 +397,7 @@ public class RenewFunCommon {
         }
 
         ConnectDatabase.closeAll(rs, stmt, conn);
+
+
     }
 }

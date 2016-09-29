@@ -1,6 +1,5 @@
 package keeper.appScript;
 
-import com.ziroom.httpclient.HttpClientUtils;
 import com.ziroom.utils.CommonFunction;
 import keeper.confManagement.commonMethods.HttpRequest;
 import keeper.confManagement.commonMethods.KeeperGlobalParas;
@@ -13,10 +12,11 @@ import java.util.HashMap;
 public class Keeper_Me {
 	
 		private static final Logger logMe = Logger.getLogger(Keeper_Me.class);
+		public static String login_uid;
 		HttpRequest hRequest = new HttpRequest();
 
 		/***
-		 * 登陆api
+		 * 管家登陆api
 		 * @param requestUrl#请求url
 		 * @param loginName#登陆用户名
 		 * @param passWord#登陆密码
@@ -38,9 +38,11 @@ public class Keeper_Me {
 			String responseData = responseJson.getString("data");
 
 			//报告生成日志
+			Reporter.log(requestUrl);
 			Reporter.log(map.toString());
 			Reporter.log(responseJson.toString());
 			logMe.info(map.toString());
+			logMe.info(requestUrl);
 
 			// 登陆后的返回的uid，赋值为后面使用
 			if (responseData.equals("[]")) {

@@ -12,6 +12,14 @@
     <artifactId>keeperScript</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>module</groupId>
+            <artifactId>RentAppScript</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
 
     <build>
         <resources>
@@ -33,6 +41,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

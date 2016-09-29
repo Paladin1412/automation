@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="二维码扫描">
+	<test name="新签物业交割">
+		<classes> 
+			<class name="apprent.tenementdelivery.NewSignDelivery">
+				<methods>
+				   <include name="ns_TenementDeliveryAndSteward" description="扫描新签物业交割二维码" />
+					<include name="keeperScanDelivery" description="扫描新签物业交割二维码" />
+					<include name="CompleteSignAffirm" description="完成新签确认" />
+					<include name="getConfigGoods" description="获取配置物品" />
+					<include name="addConfigGoods1" description="添加物品配置" />
+					<include name="addConfigGoods2" description="添加物品配置-获取房间名字" />
+					<include name="getUniversalGoods" description="添加物品配置中获取物品" />
+					<include name="configGoodsNext" description="物品配置下一步" />
+					<include name="getPropertyKeyCards" description="获取钥匙凭证" />
+					<include name="updatePropertyKeyCards" description="获取钥匙凭证"/>
+					<include name="getExpenses" description="获取生活费用"/>
+					<include name="updateExpenses" description="提交生活费用"/>
+					<include name="checkDelivery" description="查看物业交割"/>
+					<include name="goDelivery" description="去交割"/>
+					<include name="confirmDelivery" description="确认物业交割"/>
+					<include name="getRentAgentCode" description="获取管家"/>
+					<include name="getEvaluateProblems" description="获取页面评价信息"/> 
+					<include name="putEvaluateContent" description="提交评价"/>
+					 
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

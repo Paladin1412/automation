@@ -1,5 +1,7 @@
 package keeper.confManagement.commonMethods;
 
+
+import com.ziroom.utils.CommonFunction;
 import com.ziroom.utils.PropertiesUtil;
 import keeper.appScript.Keeper_Renew;
 import keeper.confManagement.config.PropertyConstants;
@@ -12,9 +14,9 @@ public class KeeperGlobalParas {
 	public static String serviceUserName= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "serviceUserName");
 	public static String servicePwd= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "servicePwd");
 
-	//收房管家用户名密码
-	public static String rentHouseUserAccount;
-	public static String rentHousePwd;
+	//收房管家用户名密码20186677
+	public static String rentHouseUserAccount= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "rentHouseUserAccount");
+	public static String rentHousePwd= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "rentHousePwd");
 
 	// 登陆后uid
 	// 管家登陆后uid
@@ -23,6 +25,7 @@ public class KeeperGlobalParas {
 	public static String customerName;
 	public static String customerPhone;
 	public static String uid;
+	public static String toKeeperTypeName;
 
 	public static String oldContractCode;
 	public static String oldContract;
@@ -85,7 +88,6 @@ public class KeeperGlobalParas {
 	public static String network = PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "network");
 	public static String ip = PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "ip");
 	public static String osType = PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "osType");
-
 	//新签物业交割参数 
 	public static String generalOrType= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "generalOrType");
 	public static String configGoodsNext_Data;
@@ -125,14 +127,59 @@ public class KeeperGlobalParas {
 	public static String waterCoolDisplayNums= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "waterCoolDisplayNums");
 	public static String electricDisplayNums= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "electricDisplayNums");
 	public static String electricBalance= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath, "electricBalance");
-	
-
 	//发起类型:1:发起,2:重新发起
 	public static String creatType= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath,"creatType");
-
 	// 房源宝
-	public static String resblockName= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath,"resblockName");
-	public static String districtName= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath,"districtName");
-    public static JSONObject getResblockIds;
+	public static String address = "";//地址
+	public static String resblockName="格兰晴天";
+	public static String districtName="通州";
+	public static String resblockId="1111027374633";
+	public static String districtId="23008625";  //对于管家
+    public static String resblock="格兰";  //输入关键字搜索小区列表
+    public static String building_no=""; //楼栋
+    public static String unit="";//楼栋单元
+    public static String floor=""; //楼层
+    public static String room_no=""; //房间号
+    public static String boType="1";
+    public static String firstSourceId="2"; //定值后期计算
+    public static String entryPersonName="李腾飞"; //录入管家
+    public static String villageId="1111027374633";
+    public static String secondSource="10";
+    public static String ownerTel="0106125356";  //座机电话
+    public static String ownerKeeperCode="20186677"; //所属管家号
+    public static String ownerName="贝贝"+ CommonFunction.getTimeStampOf10();//唯一的名字
+    public static String operatorName="李腾飞";
+    public static String keeperName="韩坡";
+    public static String keeperPhone="16986754356";
+    public static String isTopFloor="0";  //是否顶层
+    public static String ownerPhone="15071116364";
+    public static String pageSize="20";//我的商机展示个数
+    public static String pageNum="1";
+    public static String trackState="0";
+    public static String houseId="";
+    public static String busOppId="";
+    public static String trackResult="4";
+    public static String remark="跟踪完成，合作愉快";//标签文本内容
+    public static String trackPrice="6800";//和业主谈的价格（任意值）
+    public static String housePicList= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath,"housePicList");
+	public static String toilet="2";//实勘时洗手间配置（输入框）
+	public static String state="6"; //实勘时房源状态：待租中
+	public static String changeToNum="3";//实勘时房屋间数到几
+	public static String changeFromNum="2";//实勘时房屋间数从几
+	public static String area="90";//实勘时房屋总大小
+	//实勘时房间配置
+	public static String roomList= PropertiesUtil.getPropValAsString(PropertyConstants.paramsConfigPath,"roomList");
+	public static String decorateType="1";
+	//核销商机
+	public static String cancelRemark="Automation Test";//标签文本内容
+	public static String cancelReason="1";//标签文本内容
+	//收房模块数据
+	public static JSONObject houseinfo;
+	public static JSONObject ehrJson;
+	public static JSONObject viewJsonFZ;
+	public static JSONObject viewJsonZZ;
+	public static JSONObject modePrice;
+	public static String orderID;//提审单号
+	public static String standardId;
 
 }

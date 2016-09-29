@@ -1,8 +1,8 @@
 package keeper.appScript;
 
-import keeper.confManagement.commonMethods.RenewFunCommon;
 import keeper.confManagement.commonMethods.HttpRequest;
 import keeper.confManagement.commonMethods.KeeperGlobalParas;
+import keeper.confManagement.commonMethods.RenewFunCommon;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.testng.Reporter;
@@ -24,9 +24,9 @@ public class Keeper_CreditCertification {
 
         //老用户进行信用认证
         String updateidentitystatussql = "update tb_user_status set identity_status = 4  where uid IN (select uid from tb_user_identity where phone = '" + KeeperGlobalParas.customerPhone +"')";
-        RenewFunCommon.updateMysqlData(updateidentitystatussql);
+        RenewFunCommon.updateCreditMysqlData(updateidentitystatussql);
         String updatestatussql = "update tb_user_identity set status = 4 where phone = '" + KeeperGlobalParas.customerPhone + "'";
-        RenewFunCommon.updateMysqlData(updatestatussql);
+        RenewFunCommon.updateCreditMysqlData(updatestatussql);
 
     }
 
@@ -36,7 +36,7 @@ public class Keeper_CreditCertification {
     public void updateCreditScores() {
 
         String updateidentitystatussql = "update tb_user_module_score set module_score = 15 where uid = '" + KeeperGlobalParas.uid + "'";
-        RenewFunCommon.updateMysqlData(updateidentitystatussql);
+        RenewFunCommon.updateCreditMysqlData(updateidentitystatussql);
     }
 
 
@@ -45,14 +45,16 @@ public class Keeper_CreditCertification {
      *
      */
     public JSONObject s_userAuthorization(String requestUrl){
+
         HashMap<String, String> map = new HashMap<String, String>();
 
-        map.put("uid",KeeperGlobalParas.uid);
-        map.put("phone",KeeperGlobalParas.customerPhone);
+        map.put("uid", KeeperGlobalParas.uid);
+        map.put("phone", KeeperGlobalParas.customerPhone);
 
         JSONObject responseJson = hRequest.getPostReturnValue(requestUrl, map);
 
         //报告生成日志
+        Reporter.log(requestUrl);
         Reporter.log(map.toString());
         Reporter.log(responseJson.toString());
 
@@ -76,7 +78,7 @@ public class Keeper_CreditCertification {
     public JSONObject s_callCountInterface(String requestUrl){
         HashMap<String, String> map = new HashMap<String, String>();
 
-        map.put("uid",KeeperGlobalParas.uid);
+        map.put("uid", KeeperGlobalParas.uid);
 
         //更新用户信用认证状态为已完成认证
         updateUserInfo();
@@ -87,6 +89,7 @@ public class Keeper_CreditCertification {
         updateCreditScores();
 
         //报告生成日志
+        Reporter.log(requestUrl);
         Reporter.log(map.toString());
         Reporter.log(responseJson.toString());
 

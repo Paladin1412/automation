@@ -3,6 +3,7 @@ package keeper.appScript;
 import com.ziroom.httpclient.HttpClientUtils;
 import com.ziroom.utils.CommonFunction;
 import keeper.confManagement.commonMethods.FunctionCommon;
+import keeper.confManagement.commonMethods.KeeperGlobalParas;
 import keeper.confManagement.config.HireHousePropertyConstants;
 import keeper.confManagement.config.PropertyConstants;
 import keeper.confManagement.config.ValuationModelPropertyConstants;
@@ -12,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.testng.Reporter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +31,7 @@ public class Keeper_ValuationModelCommon {
 
 	// 全局变量
 	public String assessCode = null;
-	public String standardId = null;
+//	public String standardId = null;
 	public String name = null;
 	public String agentPart = null;
 	public String group = null;
@@ -43,7 +45,7 @@ public class Keeper_ValuationModelCommon {
 	public String afterRoom = null;
 	public String district = null;
 	public String resblock = null;
-	// 整租 FZ
+//	public String orderID = null;//提审单号
 	public String rentType = null;
 	// 版本
 	public String version = null;
@@ -54,6 +56,7 @@ public class Keeper_ValuationModelCommon {
 	public String houseLayout = null;
 	public String bookRoom = null;
 
+
 	// ==============================初始化参数================================
 	/**
 	 * @description: 得到管家具体信息
@@ -62,6 +65,7 @@ public class Keeper_ValuationModelCommon {
 	 * @author Elaine
 	 **/
 	public void getUserInfo(JSONObject json) {
+		System.out.println(json);
 		JSONObject data = json.getJSONObject("data");
 		name = data.getString("name");
 		agentPart = data.getString("descr");
@@ -91,17 +95,15 @@ public class Keeper_ValuationModelCommon {
 		diningRoom = viewJson.getString("diningRoom");
 		houseLayout = viewJson.getString("houseLayout");
 	}
+
+
 	// ==============================初始化参数结束================================
 
 	/**
 	 * @description: 登陆M站
 	 * @author Elaine
 	 **/
-	public boolean mLogin() {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php";
-		logger.info(httpUrl);
-		System.out.println("httpUrl" + httpUrl);
+	public String mLogin(String httpUrl) {
 
 		// 生成sign值
 		String time = CommonFunction.getTimeStampOf10();
@@ -118,29 +120,37 @@ public class Keeper_ValuationModelCommon {
 		map.put("timestamp", time);
 		map.put("blonger_group",group);
 		JSONObject jsobj = JSONObject.fromObject(map);
-		System.out.println("Map:" + map.toString());
+//		System.out.println("Map:" + map.toString());
 		// 请求接口返回值
 		Map<String, String> response = hcu.httpGetRequest(httpUrl, jsobj);
 //		System.out.println("Map:" + response.toString());
 
 		Document returnValue = Jsoup.parse(response.get("returnValue"));
 		String title = returnValue.title();
-		boolean flag = false;
-		if (title.equals("引导页 - 计价模型")) {
-			flag = true;
-			return flag;
+
+		String responseJson = response.toString();
+
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(responseJson.toString());
+		Reporter.log(map.toString());
+		Reporter.log(returnValue.toString());
+
+		if (title.equals("引导页 - 计价模型")){
+			logger.info("s_getRenewContractInfo返回值" + returnValue);
+		} else {
+			logger.info("s_getRenewContractInfo返回值------->>>>>>为空");
 		}
-		return flag;
+
+		return responseJson;
+
 	}
 
 	/**
 	 * @description: 得到standard_id信息
 	 * @author Elaine
 	 **/
-	public JSONObject houseInfo(JSONObject json) {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.houseInfo;
-		logger.info(httpUrl);
+	public JSONObject houseInfo(JSONObject json,String httpUrl) {
 
 		// 输入参数
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -155,10 +165,17 @@ public class Keeper_ValuationModelCommon {
 
 		// 请求接口返回值
 		Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
+
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+
 		return actual;
 	}
 
@@ -170,15 +187,11 @@ public class Keeper_ValuationModelCommon {
 	 *            : houseinfo返回json串
 	 * @author Elaine
 	 **/
-	public JSONObject commitHouseInfo(JSONObject json, JSONObject gethouseInfo) {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.commithouseInfo;
-		logger.info(httpUrl);
-
+	public JSONObject commitHouseInfo(JSONObject json, JSONObject gethouseInfo,String httpUrl) {
 		// standard_id值
 		String standardIdJson = JSONArray.fromObject(gethouseInfo.getString("data")).getString(0);
-		standardId = JSONObject.fromObject(standardIdJson).getString("standard_id");
-		System.out.println(standardId);
+		KeeperGlobalParas.standardId = JSONObject.fromObject(standardIdJson).getString("standard_id");
+		System.out.println(KeeperGlobalParas.standardId);
 
 		// 输入参数
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -192,7 +205,7 @@ public class Keeper_ValuationModelCommon {
 		map.put("unit", json.getString("unit"));
 		map.put("floor", json.getString("floor"));
 		map.put("room_no", json.getString("roomNum"));
-		map.put("house_code_id", standardId);
+		map.put("house_code_id", KeeperGlobalParas.standardId);
 		map.put("is_first_floor", HireHousePropertyConstants.isTopFloor);
 		JSONObject jsobj = JSONObject.fromObject(map);
 
@@ -201,7 +214,14 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+//		logger.info(actual);
+
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+
 		return actual;
 	}
 
@@ -211,14 +231,12 @@ public class Keeper_ValuationModelCommon {
 	 *            : commitHouseInfo返回json串
 	 * @author Elaine
 	 **/
-	public JSONObject getRentPrice(JSONObject commitHouseInfo) {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.getRentPrice;
-		logger.info(httpUrl);
+	public JSONObject getRentPrice(JSONObject commitHouseInfo,String httpUrl) {
 
 		// assess_code值
 		assessCode = JSONObject.fromObject(commitHouseInfo.getString("data")).getString("assess_code");
-		System.out.println(assessCode);
+//		System.out.println(assessCode);
+		rentType = "FZ";
 		logger.info("评估单号:" + assessCode);
 
 		// 输入参数
@@ -233,7 +251,6 @@ public class Keeper_ValuationModelCommon {
 		// 房间面积
 		map.put("room_area", ValuationModelPropertyConstants.roomArea);
 		// 朝向
-		System.out.println(ValuationModelPropertyConstants.orientation);
 		map.put("orientation", "南");
 		map.put("toliet", ValuationModelPropertyConstants.toliet);
 		map.put("balcony", ValuationModelPropertyConstants.balcony);
@@ -247,7 +264,14 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+//		logger.info(actual);
+
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+
 		return actual;
 	}
 
@@ -257,10 +281,7 @@ public class Keeper_ValuationModelCommon {
 	 *            : getRentPrice返回json串
 	 * @author Elaine
 	 **/
-	public JSONObject commitRoomInfo(JSONObject json, String roomNo) {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.roomInfo;
-		logger.info(httpUrl);
+	public JSONObject commitRoomInfo(JSONObject json, String roomNo, String HttpUrl) {
 
 		// 输入参数
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -274,8 +295,8 @@ public class Keeper_ValuationModelCommon {
 		// 房间面积
 		map.put("room_area", ValuationModelPropertyConstants.roomArea);
 		// 朝向
-		//map.put("orientation", "南");
-		map.put("orientation", ValuationModelPropertyConstants.orientation);
+		map.put("orientation", "南");
+//		map.put("orientation", ValuationModelPropertyConstants.orientation);
 		map.put("toliet", ValuationModelPropertyConstants.toliet);
 		map.put("balcony", ValuationModelPropertyConstants.balcony);
 		// 是否为优化间， 1是，2否
@@ -296,12 +317,18 @@ public class Keeper_ValuationModelCommon {
 
 		JSONObject jsobj = JSONObject.fromObject(map);
 		// 请求接口返回值
-		Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
+		Map<String, String> response = hcu.httpPostRequest(HttpUrl, jsobj);
 
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
-		actual.put("url", httpUrl);
+		actual.put("url", HttpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+//		logger.info(actual);
+
+		logger.info(HttpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
 
 		return actual;
 	}
@@ -310,10 +337,7 @@ public class Keeper_ValuationModelCommon {
 	 * @description: 提交公共区域配置信息
 	 * @author Elaine
 	 **/
-	public JSONObject commitConfigInfo() {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.configInfo;
-		logger.info(httpUrl);
+	public JSONObject commitConfigInfo(String httpUrl) {
 
 		// 输入参数
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -370,7 +394,12 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
 
 		return actual;
 	}
@@ -379,11 +408,7 @@ public class Keeper_ValuationModelCommon {
 	 * @description: 得到出房价格
 	 * @author Elaine
 	 **/
-	public JSONObject getHirePrice() {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.getHirePrice;
-		logger.info(httpUrl);
-
+	public JSONObject getHirePrice(String httpUrl) {
 		// 输入参数
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("assess_code", assessCode);
@@ -413,7 +438,12 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+		Reporter.log(httpUrl);
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+
 		return actual;
 	}
 
@@ -452,9 +482,7 @@ public class Keeper_ValuationModelCommon {
 	 * @description: 提交评估
 	 * @author Elaine
 	 **/
-	public JSONObject commitAssessInfo() {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.assessInfo;
+	public JSONObject commitAssessInfo(String httpUrl) {
 		logger.info(httpUrl);
 
 		// 输入参数
@@ -465,10 +493,15 @@ public class Keeper_ValuationModelCommon {
 		JSONObject jsobj = JSONObject.fromObject(map);
 		// 请求接口返回值
 		Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
+		logger.info(response);
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
 		return actual;
 	}
 
@@ -476,22 +509,28 @@ public class Keeper_ValuationModelCommon {
 	 * @description: 上报评估
 	 * @author Elaine
 	 **/
-	public boolean assessView() {
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.assessView + standardId;
+	public String assessView(String httpUrl) {
 		logger.info(httpUrl);
 
 		// 请求接口返回值
 		Map<String, String> response = hcu.httpGetRequest(httpUrl);
 		Document doc = Jsoup.parse(response.get("returnValue"));
 		String title = doc.title();
-		boolean flag = false;
-		if (title.equals("评估详细")) {
-			flag = true;
-			return flag;
+
+		String responseJson = response.toString();
+		Reporter.log(httpUrl);
+		Reporter.log(responseJson);
+		logger.info(httpUrl);
+		logger.info(response);
+
+		if (title.equals("评估详细")){
+			logger.info("assessView返回值" + doc);
+		} else {
+			logger.info("assessView返回值------->>>>>>为空");
 		}
 
-		return flag;
+		return responseJson;
+
 	}
 
 	/**
@@ -500,9 +539,12 @@ public class Keeper_ValuationModelCommon {
 	 **/
 	public String getAssessID() {
 		String sql = "Select id from mode_price.t_price_mode_assess where assess_code='" + assessCode + "'";
+//		logger.info(sql);
 		List<Map<String, String>> getAllData = fc.getAllDataFromMySqlData(sql, "mode_price");
+//		logger.info("getAllData " + getAllData);
 		String id = getAllData.get(0).get("id").toString();
 		logger.info("Asscess ID" + id);
+		KeeperGlobalParas.orderID = id;
 		return id;
 	}
 
@@ -510,30 +552,52 @@ public class Keeper_ValuationModelCommon {
 	 * @description: 提交上报
 	 * @author Elaine
 	 **/
-	public JSONObject admitAssess() {
-		String id = getAssessID();
-		String domainName = PropertyConstants.MODEPRICE_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.admitAssess + id;
-		logger.info(httpUrl);
+	public JSONObject admitAssess(String httpUrl) {
 
 		// 请求接口返回值
 		Map<String, String> response = hcu.httpGetRequest(httpUrl);
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
-		logger.info(actual);
+		Reporter.log(httpUrl);
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(actual.toString());
 		return actual;
 	}
+	/**
+	 * 撤销计价模型
+	 *http://s.ziroom.com/index.php?uri=pricemode/admit_cancel&id=124862&house_code_id=1115030424407
+	 **/
+	public String admitCancel(String httpUrl){
+//		orderID = getAssessID();
+		String HttpUrl = httpUrl + "uri=pricemode/admit_cancel&id=" + KeeperGlobalParas.orderID +"&house_code_id=" + KeeperGlobalParas.standardId;
+		logger.info(HttpUrl);
+		// 请求接口返回值
+		Map<String, String> response = hcu.httpGetRequest(HttpUrl);
+		logger.info(response);
+		Document doc = Jsoup.parse(response.get("returnValue"));
+		String title = doc.getElementsByClass("tq_h1title").text();
 
+		String responseJson = response.toString();
+
+		Reporter.log(HttpUrl);
+		Reporter.log(responseJson.toString());
+
+		if (title.equals("已撤销")){
+			logger.info("admitCancel返回值" + doc);
+		} else {
+			logger.info("admitCancel返回值------->>>>>>为空");
+		}
+
+		return responseJson;
+
+	}
 	// ====================整租3.0===================================================
 	/**
 	 * @description: 登陆login.ziroom.com
 	 * @author Elaine
 	 **/
-	public boolean login() {
-
-		String domainName = PropertyConstants.CRM_LOGIN_DOMAIN;
-		String httpUrl = domainName + "/login.php";
-		logger.info(httpUrl);
+	public String login(String httpUrl) {
 
 		// 请求接口返回值
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -549,26 +613,31 @@ public class Keeper_ValuationModelCommon {
 		map.put("city", city);
 		JSONObject jsobj = JSONObject.fromObject(map);
 
+		logger.info(account);
 		Map<String, String> response = hcu.httpGetRequest(httpUrl, jsobj);
 		Document doc = Jsoup.parse(response.get("returnValue"));
 		String title = doc.getElementsByClass("bg").first().text();
-		boolean flag = false;
-		if (title.equals("平台首页")) {
-			flag = true;
-			return flag;
+
+		String responseJson = response.toString();
+		Reporter.log(jsobj.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(doc.toString());
+
+		if (title.equals("平台首页")){
+			logger.info("login返回值" + doc);
+		} else {
+			logger.info("login返回值------->>>>>>为空");
 		}
 
-		return flag;
+		return responseJson;
 	}
 
 	/**
 	 * @description: 得到整租收房价格
 	 * @author Elaine
 	 **/
-	public JSONObject getEntireHirePrice() {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php";
-		logger.info(httpUrl);
+	public JSONObject getEntireHirePrice(String httpUrl) {
 
 		// 请求接口返回值
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -581,13 +650,14 @@ public class Keeper_ValuationModelCommon {
 		Map<String, String> response = hcu.httpGetRequest(httpUrl, jsobj);
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 
-		System.out.println(jsobj);
-		System.out.println(response);
-
-
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
 		return actual;
 	}
 
@@ -597,10 +667,7 @@ public class Keeper_ValuationModelCommon {
 	 *            hireHouseFlow : hireHouseFlow返回json串
 	 * @author Elaine
 	 **/
-	public JSONObject getStandardId(JSONObject hireHouseFlow) {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php";
-		logger.info(httpUrl);
+	public JSONObject getStandardId(JSONObject hireHouseFlow,String httpUrl) {
 
 		// JSONObject data = hireHouseFlow.getJSONObject("data");
 		String value = hireHouseFlow.getString("districtId") + "__" + hireHouseFlow.getString("villageId") + "_"
@@ -619,7 +686,12 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
 		return actual;
 	}
 
@@ -631,14 +703,10 @@ public class Keeper_ValuationModelCommon {
 	 *            getEntireHirePrice : getEntireHirePrice返回值
 	 * @author Elaine
 	 **/
-	public JSONObject savePriceMode(JSONObject hireHouseFlow, JSONObject getEntireHirePrice, JSONObject getStandardId) {
-
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.apiUri;
-		logger.info(httpUrl);
+	public JSONObject savePriceMode(JSONObject hireHouseFlow, JSONObject getEntireHirePrice, JSONObject getStandardId , String httpUrl) {
 
 		JSONArray doc = getStandardId.getJSONObject("response").getJSONArray("docs");
-		standardId = doc.getJSONObject(0).getString("standard_id");
+		KeeperGlobalParas.standardId = doc.getJSONObject(0).getString("standard_id");
 
 		// 请求接口返回
 		HashMap<String, Object> map = new HashMap<String, Object>();
@@ -755,7 +823,7 @@ public class Keeper_ValuationModelCommon {
 		data.put("house_area", ValuationModelPropertyConstants.roomArea);
 		data.put("real_rent_price", ValuationModelPropertyConstants.real_rent_price);
 		data.put("real_hire_house_price", getEntireHirePrice.getJSONObject("data").getString("price"));
-		data.put("standard_id", standardId);
+		data.put("standard_id", KeeperGlobalParas.standardId);
 		data.put("resblock_id", hireHouseFlow.getString("villageId"));
 		data.put("pre_house_type", ValuationModelPropertyConstants.pre_house_type);	
 
@@ -805,13 +873,20 @@ public class Keeper_ValuationModelCommon {
 		mapJson.put("data", jsobj);
 
 		Map<String, String> response = hcu.httpPostRequest(httpUrl, mapJson);
-		System.out.println(mapJson + "~~~~~~~~~~~");
-		System.out.println(jsobj + "~~~~~~~~~~~");
-		System.out.println(response + "~~~~~~~~~~~");
+//		System.out.println(mapJson + "~~~~~~~~~~~");
+//		System.out.println(jsobj + "~~~~~~~~~~~");
+//		System.out.println(response + "~~~~~~~~~~~");
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
 		// logger.info(actual);
+
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+
 		return actual;
 	}
 	
@@ -819,11 +894,7 @@ public class Keeper_ValuationModelCommon {
 	 * @description: 装修信息
 	 * @author Elaine
 	 **/
-	public JSONObject getEntireConfigItems() {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php?";//+ ValuationModelPropertyConstants.apiUri;
-		// logger.info(httpUrl);
-
+	public JSONObject getEntireConfigItems(String httpUrl) {
 
 		// 请求接口返回值
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -835,12 +906,19 @@ public class Keeper_ValuationModelCommon {
 		JSONObject jsobj = JSONObject.fromObject(map);
 
 		Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
-		System.out.println(response + "~~~~~~~~~~~");
+//		System.out.println(response + "~~~~~~~~~~~");
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
-		System.out.println(jsobj);
+//		System.out.println(jsobj);
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		Reporter.log(httpUrl);
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+
 		return actual;
 	}
 
@@ -851,10 +929,7 @@ public class Keeper_ValuationModelCommon {
 	 * @author Elaine
 	 **/
 
-	public JSONObject decorateInfo(JSONObject savePriceMode) {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.apiUri;
-		// logger.info(httpUrl);
+	public JSONObject decorateInfo(JSONObject savePriceMode,String httpUrl) {
 
 		assessCode = savePriceMode.getJSONObject("data").getString("assess_id");
 
@@ -888,14 +963,15 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
 		return actual;
 	}
 
-	public JSONObject saveConfig(JSONObject savePriceMode) {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.apiUri;
-		logger.info(httpUrl);
+	public JSONObject saveConfig(JSONObject savePriceMode,String httpUrl) {
 
 		assessCode = savePriceMode.getJSONObject("data").getString("assess_id");
 
@@ -938,118 +1014,21 @@ public class Keeper_ValuationModelCommon {
 		System.out.println(actual);
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
 
 		return actual;
 	}
-
-//	public JSONObject decorateInfo(JSONObject savePriceMode) {
-//		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-//		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.apiUri;
-//		// logger.info(httpUrl);
-//
-//		assessCode = savePriceMode.getJSONObject("data").getString("assess_id");
-//
-//		// 请求接口返回值
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		map.put("type", ValuationModelPropertyConstants.save_type);
-//		map.put("info_type", "decorate");
-//		map.put("assess_id", assessCode);
-//		JSONObject jsobj = JSONObject.fromObject(map);
-//
-//		// data 值
-//		HashMap<String, String> data = new HashMap<String, String>();
-//		JSONObject decorate = new JSONObject();
-//		JSONObject dec = new JSONObject();
-//
-//		for (int i = 25; i < 77; i++) {
-//			if (i < 40) {
-//				data.put("sums", "1");
-//			} else {
-//				data.put("sums", ValuationModelPropertyConstants.sums);
-//			}
-//			data.put("item_id", Integer.toString(i));
-//			decorate.put(Integer.toString(i), JSONObject.fromObject(data));
-//			decorate.remove("70");
-//		}
-//
-//		dec.put("decorate", decorate);
-//		jsobj.put("data", dec);
-//
-//		Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
-//		System.out.println(response + "===============");
-//		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
-//		actual.put("url", httpUrl);
-//		actual.put("inPara", jsobj.toString());
-//		logger.info(actual);
-//		return actual;
-//	}
-//
-//	/**
-//	 * @description: 配置信息
-//	 * @param savePriceMode
-//	 *            savePriceMode : savePriceMode返回json串
-//	 * @author Elaine
-//	 **/
-//	public JSONObject saveConfig(JSONObject savePriceMode) {
-//		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-//		String httpUrl = domainName + "/index.php?" + ValuationModelPropertyConstants.apiUri;
-//		logger.info(httpUrl);
-//
-//		assessCode = savePriceMode.getJSONObject("data").getString("assess_id");
-//
-//		// 请求接口返回值
-//		HashMap<String, String> map = new HashMap<String, String>();
-//		map.put("type", ValuationModelPropertyConstants.save_type);
-//		map.put("info_type", ValuationModelPropertyConstants.config_info_type);
-//		map.put("assess_id", assessCode);
-//		JSONObject jsobj = JSONObject.fromObject(map);
-//
-//		// data 值
-//		HashMap<String, String> data = new HashMap<String, String>();
-//		HashMap<String, String> data_Three = new HashMap<String, String>();
-//		JSONObject configs = new JSONObject();
-//		JSONObject config = new JSONObject();
-//
-//		for (int i = 84; i < 139; i++) {
-//			if(i < 90){
-//				data.put("sums", "1");
-//			}else{
-//			   data.put("sums", ValuationModelPropertyConstants.sums);
-//			}
-//			data.put("item_id", Integer.toString(i));
-//			configs.put(Integer.toString(i), JSONObject.fromObject(data));
-//			configs.remove("118");
-//			configs.remove("119");
-//			configs.remove("109");
-//		}
-//
-//		data_Three.put("unit_price", ValuationModelPropertyConstants.unit_price);
-//		data_Three.put("sums", "1");
-//		data_Three.put("item_id", "3");
-//		configs.put("3", JSONObject.fromObject(data_Three));
-//		config.put("config", configs);
-//		jsobj.put("data", config);
-//
-//		Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
-//
-//		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
-//		System.out.println(actual);
-//		actual.put("url", httpUrl);
-//		actual.put("inPara", jsobj.toString());
-//		logger.info(actual);
-//
-//		return actual;
-//	}
 
 	/**
 	 * @description: 保存配置信息
 	 * @author Elaine
 	 **/
-	public JSONObject saveConfigInfo() {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php";
-		logger.info(httpUrl);
+	public JSONObject saveConfigInfo(String httpUrl) {
 
 		// 请求接口返回值
 		HashMap<String, String> map = new HashMap<String, String>();
@@ -1064,7 +1043,13 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		actual.put("inPara", jsobj.toString());
-		logger.info(actual);
+
+		Reporter.log(jsobj.toString());
+		Reporter.log(actual.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(actual.toString());
+
 		return actual;
 	}	
 
@@ -1073,41 +1058,47 @@ public class Keeper_ValuationModelCommon {
 	 * @author Elaine
 	 **/
 	public void updateAuditStatus() {
-		String sql = "update t_price_mode_assess set audit_status=2 where house_code_id='" + standardId + "'";
+		String sql = "update t_price_mode_assess set audit_status=2 where house_code_id='" + KeeperGlobalParas.standardId + "'";
 		fc.updateMySqlData(sql, "mode_price");
-		System.out.println("ss");
+//		System.out.println("ss");
+
 	}
 
 	/**
 	 * @description: 保存配置信息
 	 * @author Elaine
 	 **/
-	public boolean admitPriceMode() {
-		String domainName = PropertyConstants.PHP_CRM_DOMAIN;
-		String httpUrl = domainName + "/index.php";// ?uri=pricemode/admit&id="
-													// + assessCode +
-													// "&house_code_id="+standardId
-													// ;
-		logger.info(httpUrl);
+	public String admitPriceMode(String httpUrl) {
 
 		// 请求接口返回值
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put("uri", "pricemode/admit");
 		map.put("id", assessCode);
-		map.put("house_code_id", standardId);
+		map.put("house_code_id", KeeperGlobalParas.standardId);
 		JSONObject jsobj = JSONObject.fromObject(map);
 
 		Map<String, String> response = hcu.httpGetRequest(httpUrl, jsobj);
 		Document doc = Jsoup.parse(response.get("returnValue"));
 		String title = doc.getElementsByClass("tq_h1title").text();
-		System.out.println("333");
-		boolean flag = false;
+
+		String responseJson = response.toString();
+		KeeperGlobalParas.orderID = assessCode;
+		Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+
+		Reporter.log(jsobj.toString());
+		Reporter.log(returnStatusCode.toString());
+		logger.info(httpUrl);
+		logger.info(jsobj.toString());
+		logger.info(responseJson.toString());
+
 		if (title.equals("提交成功!")) {
-			flag = true;
-			return flag;
+			logger.info("assessView返回值" + doc);
+		} else {
+			logger.info("assessView返回值------->>>>>>为空");
 		}
 
-		return flag;
+		return responseJson;
+
 	}
 
 	/**
@@ -1116,7 +1107,7 @@ public class Keeper_ValuationModelCommon {
 	 * @author Elaine
 	 **/
 	public String getAssessCode() {
-		String sql = "Select assess_code from t_price_mode_assess where house_code_id='" + standardId + "'";
+		String sql = "Select assess_code from t_price_mode_assess where house_code_id='" + KeeperGlobalParas.standardId + "'";
 		List<Map<String, String>> getAllData = fc.getAllDataFromMySqlData(sql, "mode_price");
 		String code = getAllData.get(0).get("assess_code").toString();
 		logger.info("Asscess code" + code);

@@ -3,93 +3,18 @@ package keeper.confManagement.commonMethods;
 import com.ziroom.utils.CommonFunction;
 import com.ziroom.utils.ConnectDatabase;
 import keeper.confManagement.config.PropertyConstants;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 import java.sql.*;
-import java.util.*;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class FunctionCommon extends CommonFunction {
-	/***
-	 * 得到timeStamps方法 APP 10位
-	 * 
-	 * @return
-	 * 
-	 * @author Elaine
-	 */
-	public String getAPPTimeStamps() {
-		// String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-		Date date = new Date();
-		String time = String.valueOf(date.getTime()).substring(0, 10);
-
-		return time;
-	}
-
-	/***
-	 * 得到timeStamps方法 CRM 13位
-	 * 
-	 * @return
-	 * 
-	 * @author Elaine
-	 */
-	public String getCRMTimeStamps() {
-		// String TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-		Date date = new Date();
-		String time = String.valueOf(date.getTime()).substring(0, 13);
-
-		return time;
-	}
-
-	/***
-	 * 得到sign方法
-	 * 
-	 * @return
-	 * 
-	 * @author Elaine
-	 */
-	public String getSignValue(String uid, String time) {
-		String key = "7srzT88FcNiRQA3n";
-		if (uid == null || uid.length() < 1) {
-			uid = "0";
-		}
-		String sign = toMd5((uid + time + key).getBytes());
-
-		return sign;
-	}
-
-	/***
-	 * 得到json Array方法
-	 * 
-	 * @return
-	 * 
-	 * @author Elaine
-	 */
-	public JSONObject stringToJsonArray(JSONObject json, int i) {
-		String data = json.getString("data");
-		JSONArray array = JSONArray.fromObject(data);
-		JSONObject sr = array.getJSONObject(i);
-		return sr;
-	}
-
-	/***
-	 * 得到随机的整数1-50
-	 * 
-	 * @return
-	 * 
-	 * @author Elaine
-	 */
-	public static int getRandomNum(int max, int min) {
-		 Random random = new Random();
-		
-		 int result = random.nextInt(max)%(max-min+1) + min;
-		 System.out.println(result);
-		 return result;
-	}
 
 	/**
 	 * 从数据库中获取相应值
-	 * 
+	 *
 	 *            sql : 查询语句
 	 * @Elaine
 	 */
@@ -125,7 +50,7 @@ public class FunctionCommon extends CommonFunction {
 
 	/**
 	 * 从mysql数据库中获取相应值
-	 * 
+	 *
 	 *            sql : 查询语句
 	 * @Elaine
 	 */
@@ -133,10 +58,10 @@ public class FunctionCommon extends CommonFunction {
 		List<Map<String, String>> list = getAllDataFromMySqlDatabase(sql, dataName, true);
 		return list;
 	}
-	
+
 	/**
 	 * 从mysql数据库中获取相应值
-	 * 
+	 *
 	 *            sql : 查询语句
 	 * @Elaine
 	 */
@@ -153,10 +78,10 @@ public class FunctionCommon extends CommonFunction {
 				PropertyConstants.MYSQL_USERNAME, PropertyConstants.MYSQL_PASSWORD);
 		return list;
 	}
-	
+
 	/**
 	 * 从oracle数据库中获取相应值
-	 * 
+	 *
 	 *            sql : 查询语句
 	 * @Elaine
 	 */
@@ -172,23 +97,11 @@ public class FunctionCommon extends CommonFunction {
 				PropertyConstants.ORACLE_USERNAME, PropertyConstants.ORACLE_PASSWORD);
 		return list;
 	}
-	
-	
-	/**
-	 * 从oracle数据库中获取相应值
-	 * 
-	 *            sql : 查询语句
-	 * @Elaine
-	 */
-	public List<Map<String, String>> getAllDataFromOracleData(String sql) {
-		List<Map<String, String>> list = getAllDataFromOracleDatabase(sql,true);
-		return list;
-	}
 
 
 	/**
 	 * 更新数据库
-	 * 
+	 *
 	 * @param
 	 *            sql : 查询语句
 	 * @Elaine
@@ -215,7 +128,7 @@ public class FunctionCommon extends CommonFunction {
 
 	/**
 	 * 更新mysql数据库中数据
-	 * 
+	 *
 	 *            sql : 查询语句
 	 * @Elaine
 	 */
@@ -231,39 +144,16 @@ public class FunctionCommon extends CommonFunction {
 		updateData(ConnectDatabase.DRIVER, mysqlUrl, PropertyConstants.MYSQL_USERNAME, PropertyConstants.MYSQL_PASSWORD,
 				sql);
 	}
-	
+
 	/**
 	 * 更新mysql数据库中数据
-	 * 
+	 *
 	 *            sql : 查询语句
 	 * @Elaine
 	 */
 	public void updateMySqlData(String sql, String dataName) {
 		updateMySqlDatabase(sql,dataName, true);
 	}
-	
-	/**
-	 * 更新mysql数据库中数据
-	 * 
-	 *            sql : 查询语句
-	 * @Elaine
-	 */
-	public void updateOracleData(String sql) {
-		String orcacleUrl = ConnectDatabase.ASSETS_JDBC + ":@" + PropertyConstants.ORACLE_ADDRESS + ":" + PropertyConstants.ORACLE_PORT + ":" + PropertyConstants.ORACLE_SID;
 
-		updateData(ConnectDatabase.ASSETS_DRIVER, orcacleUrl, PropertyConstants.ORACLE_USERNAME, PropertyConstants.ORACLE_PASSWORD,
-				sql);
-	}
-	
-	/**
-	 * 替换字符串
-	 * @Elaine
-	 */
-	public static String replaceString(String repString){
-		if(repString.equals("null")){			
-			return "";
-		}
-		
-		return repString;
-	}
+
 }

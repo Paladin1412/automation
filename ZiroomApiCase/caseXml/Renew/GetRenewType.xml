@@ -4,7 +4,7 @@
 
     <test name="登陆">
         <classes>
-            <class name="interfacescript.init.Keeper_Login">
+            <class name="apprent.init.Rent_Login">
                 <methods>
                     <include name="login" description="登陆" />
                 </methods>
@@ -14,7 +14,7 @@
 
     <test name="RenewType=cx_长续">
         <classes>
-            <class name="interfacescript.renew.GetRenewcx">
+            <class name="apprent.renew.GetRenewcx">
                 <methods>
                     <!--<include name="getList" description="获取待续约列表" />-->
                     <include name="getCanRenewContractSP" description="获取待续约列表" />
@@ -35,7 +35,7 @@
 
     <test name="RenewType=dx_短续">
         <classes>
-            <class name="interfacescript.renew.GetRenewdx">
+            <class name="apprent.renew.GetRenewdx">
                 <methods>
                     <!--<include name="getList" description="获取待续约列表" />-->
                     <include name="getCanRenewContractSP" description="获取待续约列表" />
@@ -54,7 +54,7 @@
 
     <test name="RenewType=wf_尾房">
         <classes>
-            <class name="interfacescript.renew.GetRenewwf">
+            <class name="apprent.renew.GetRenewwf">
                 <methods>
                     <!--<include name="getList" description="获取待续约列表" />-->
                     <include name="getCanRenewContractSP" description="获取待续约列表" />
