@@ -4,10 +4,10 @@
            failures="0"
            errors="0"
            skipped="0"
-           time="1.360">
+           time="1.455">
   <properties />
   
   
-            <testcase name="login" time="1.360" classname="keeper.init.Keeper_LoginS" />
+            <testcase name="login" time="1.455" classname="keeper.init.Keeper_LoginS" />
       
 </testsuite>
