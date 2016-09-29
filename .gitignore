@@ -20,12 +20,3 @@
 /target/
 /bin/
 /test-output/
-ZiroomApiCase/src/main/
-ZiroomApiCase/target/classes/
-ZiroomApiCase/target/generated-test-sources/
-ZiroomApiCase/target/test-classes/
-ZiroomApiCase/test-output/html/
-keeperScript/src/test/
-keeperScript/target/classes/keeper/
-keeperScript/target/generated-sources/
-keeperScript/target/surefire/
