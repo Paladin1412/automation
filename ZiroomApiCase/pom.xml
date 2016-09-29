@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>automation</artifactId>
+        <groupId>module</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>ZiroomApiCase</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>module</groupId>
+            <artifactId>keeperScript</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>module</groupId>
+            <artifactId>ZoZiroomScript</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>module</groupId>
+            <artifactId>AmsScript</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>module</groupId>
+            <artifactId>RentAppScript</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.7.1</version>
+                <configuration>
+                    <suiteXmlFiles>
+                         <!--<suiteXmlFile>caseXml/harvestmodule/FlowFZ.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>caseXml/zrpd/init.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>caseXml/zrpd/ConfigFlowManage.xml</suiteXmlFile>-->
+                        <!--  <suiteXmlFile>caseXml/harvesthouse/HarvestHouse.xml</suiteXmlFile> -->
+                        <!--<suiteXmlFile>${RenewType}</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${Resign}</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${Login}</suiteXmlFile>&lt;!&ndash; app登陆 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${JR_FindHouse}</suiteXmlFile>&lt;!&ndash; 合租搜房 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${JR_NewSign}</suiteXmlFile> &lt;!&ndash; 合租新签 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${WR_NewSign}</suiteXmlFile>  &lt;!&ndash; 整租新签 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${newSignDelivery}</suiteXmlFile>     &lt;!&ndash; 物业交割 &ndash;&gt;-->
+                        <suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile><!-- 收房模块分租 -->
+                        <suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile><!-- 收房模块整租 -->
+                    </suiteXmlFiles>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <properties>
+                        <property>
+                            <name>userdefaultlisteners</name>
+                            <value>false</value>
+                        </property>
+                        <property>
+                            <name>listener</name>
+                            <value>org.uncommons.reportng.HTMLReporter,
+                                org.uncommons.reportng.JUnitXMLReporter,
+                            </value>
+                        </property>
+                    </properties>
+                    <workingDirectory>target/</workingDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+  
+</project>

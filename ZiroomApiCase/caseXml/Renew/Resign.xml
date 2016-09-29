@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="合租流程">
+	<test name="登陆">
+		<classes>
+			<class name="apprent.init.Rent_Login">
+				<methods>
+					<include name="login" description="登陆" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="续签流程">
+		<classes>
+			<class name="apprent.renew.Resign">
+				<methods>
+					<!--<include name="getList" description="获取待续约列表" />-->
+					<include name="login" description="登陆" />	
+					<include name="getCanRenewContractSP" description="获取待续约列表" />
+					<include name="checkContractCanRenew" description="查看合同是否能生成新的" />
+					<include name="getContractInfo" description="续约详情" />
+					<include name="getRenewType" description="生成续约1" />
+					<include name="getRenewPaymentList" description="生成续约2" />
+					<include name="getRenewPayInfo" description="生成续约3" />	
+					<include name="renewContract" description="生成续约4" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="APP签约">
+		<classes>
+			<class name="apprent.renew.Renew">
+				<methods>
+					<include name="testLogin" description="登陆" />
+					<include name="testGetContractList" description="获取合同列表" />
+					<include name="testGetContractInfo" description="获取合同详情" />
+					<include name="testCheckHasRenewContract" description="检查合同是否有续约合同" />
+					<include name="testGetRenewContractInfo" description="获取续约合同详情" />
+					<include name="testGet_ra_config" description="确认合同1" />
+					<include name="testClauseSelect" description="确认合同2" />
+					<include name="testGetFirstPayInfo" description="获取首次支付信息" />
+					<include name="testGetRenewActivity" description="确认生成续约Activity" />
+					<include name="testGet_ra_sign_info" description="短信验证码校验1" />
+					<include name="testSet_ra_signature" description="短信验证码检验2" />
+					<include name="testConfirmRenewContract" description="确认续签合同" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="关闭续约订单">
+		<classes>
+			<class name="apprent.renew.Resign">
+				<methods>
+					<include name="closeRenewContract" description="关闭续约" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<listeners>
+		<listener class-name="org.uncommons.reportng.HTMLReporter" />
+		<listener class-name="org.uncommons.reportng.JUnitXMLReporter" />
+	</listeners>
+</suite>

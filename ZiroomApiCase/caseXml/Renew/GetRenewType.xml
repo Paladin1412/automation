@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="续约">
+
+    <test name="登陆">
+        <classes>
+            <class name="apprent.init.Rent_Login">
+                <methods>
+                    <include name="login" description="登陆" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="RenewType=cx_长续">
+        <classes>
+            <class name="apprent.renew.GetRenewcx">
+                <methods>
+                    <!--<include name="getList" description="获取待续约列表" />-->
+                    <include name="getCanRenewContractSP" description="获取待续约列表" />
+                    <include name="checkContractCanRenew" description="查看合同是否能生成新的" />
+                    <include name="getContractInfo" description="续约详情" />
+                    <include name="getRenewType" description="生成续约1" />
+                    <include name="getRenewPaymentList" description="生成续约2" />
+                    <include name="getRenewPayInfoQuarters" description="支付方式选择季付" />
+                    <include name="getRenewPayInfoMonth" description="支付方式选择月付" />
+                    <include name="getRenewPayInfoHalfYear" description="支付方式选择半年付" />
+                    <include name="getRenewPayInfoYear" description="支付方式选择年付" />
+                    <include name="getRenewPayInfoWhite" description="支付方式选择白条" />
+                    <include name="getFailedCaseTest" description="错误case报告展示" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="RenewType=dx_短续">
+        <classes>
+            <class name="apprent.renew.GetRenewdx">
+                <methods>
+                    <!--<include name="getList" description="获取待续约列表" />-->
+                    <include name="getCanRenewContractSP" description="获取待续约列表" />
+                    <include name="checkContractCanRenew" description="查看合同是否能生成新的" />
+                    <include name="getContractInfo" description="续约详情" />
+                    <!--<include name="getRenewType" description="生成续约1" />-->
+                    <include name="getRenewPaymentList" description="生成续约2" />
+                    <include name="getRenewPayInfoQuarters" description="支付方式选择季付" />
+                    <include name="getRenewPayInfoMonth" description="支付方式选择月付" />
+                    <include name="getRenewPayInfoHalfYear" description="支付方式选择半年付" />
+                    <include name="getRenewPayInfoOnce" description="支付方式选择一次付清" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="RenewType=wf_尾房">
+        <classes>
+            <class name="apprent.renew.GetRenewwf">
+                <methods>
+                    <!--<include name="getList" description="获取待续约列表" />-->
+                    <include name="getCanRenewContractSP" description="获取待续约列表" />
+                    <include name="checkContractCanRenew" description="查看合同是否能生成新的" />
+                    <include name="getContractInfo" description="续约详情" />
+                    <!--<include name="getRenewType" description="生成续约1" />-->
+                    <include name="getRenewPaymentList" description="生成续约2" />
+                    <include name="getRenewPayInfoQuarters" description="支付方式选择季付" />
+                    <include name="getRenewPayInfoMonth" description="支付方式选择月付" />
+                    <include name="getRenewPayInfoHalfYear" description="支付方式选择半年付" />
+                    <include name="getRenewPayInfoOnce" description="支付方式选择一次付清" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <listeners>
+        <listener class-name="org.uncommons.reportng.HTMLReporter"/>
+        <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
+    </listeners>
+</suite>

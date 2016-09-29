@@ -1,0 +1,25 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suite1" verbose="1">
+
+    <test name="testValuationModle">
+        <classes>
+            <class name="interfacescript.ValuationModel.ValuationModleNewAction">
+                <methods>
+                    <include name="testKeeperLogin" description="管家登录"/>
+                    <include name="testMLogin" description="M站登录"/>
+                    <include name="testGetHouseInfo" description="得到房源信息"/>
+                    <include name="testCommitHouseInfo" description="提交房源信息"/>
+                    <include name="testCommitRoomInfo" description="提交房间信息"/>
+                    <include name="testCommitConfigInfo" description="提交公共区域配置"/>
+                    <include name="testGetHirePrice" description="得到出房价"/>
+                    <include name="testCommitAssessInfo" description="提交信息"/>
+                    <include name="testAssessView" description="上报评估"/>
+                    <include name="testAdmitAssess" description="保存"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+
+</suite>

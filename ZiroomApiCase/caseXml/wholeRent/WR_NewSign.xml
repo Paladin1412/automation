@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="整租">
+	<test name="新签">
+		<classes>
+			<class name="apprent.wholerent.NewSign">
+			
+				 <methods>
+					<include name="ZSearchHouse" description="搜索房源大列表" />
+					<include name="ZSearchHouseDetail" description="进入单个房源" />
+					<include name="ZSearchHousePromotion" description="提升房源" />
+				</methods>
+			</class>
+			
+			<class name="apprent.joinrent.NewSign">
+				<methods>
+					<include name="oneSign" description="点击单签此房" />
+					<include name="okinfo1" description="确定个人信息1" />
+					<include name="okinfo2" description="确定个人信息2" />
+					<include name="okinfo3" description="确定个人信息3" />
+					<include name="promiseMyself1" description="我承诺1" />
+					<include name="promiseMyself2" description="我承诺2" />
+					<include name="okPayType1" description="确认付款方式1" />
+					<include name="okPayType2" description="确认付款方式2" />
+					<include name="agreeContractTerms1" description="我同意上述合同条款1" />
+					<include name="agreeContractTerms2" description="我同意上述合同条款2" />
+					<include name="okContract" description="确认合同" />
+					<include name="okAboveInfo1" description="我确认以上信息1" />
+					<include name="okAboveInfo2" description="我确认以上信息2" />
+					<include name="verificationOk" description="点击验证码确认" /> 
+					<include name="getPayInfo" description="验证码后获取支付信息" />
+					<include name="ziroom_fistPayMent" description="自如支付" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>
+
