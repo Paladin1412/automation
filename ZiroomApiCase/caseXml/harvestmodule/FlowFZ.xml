@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="收房业务">
+<suite name="收房业务分租">
 
     <test name="testLogin">
         <classes>
@@ -11,149 +11,149 @@
         </classes>
     </test>
 
-    <!--<test name="testHarvestHouse">-->
-        <!--<classes>-->
-            <!--<class name="keeper.harvesthouse.HarvestHouse">-->
-                <!--<methods>-->
-                    <!--<include name="getDistrictList" description="获取城区列表(添加商机)"/>-->
-                    <!--<include name="getVillageList" description="获取小区名字(添加商机)"/>-->
-                    <!--<include name="getBuildNumList" description="获取楼栋(添加商机)"/>-->
-                    <!--<include name="getUnitList" description="获取单元(添加商机)"/>-->
-                    <!--<include name="getFloorList" description="获取楼层(添加商机)"/>-->
-                    <!--<include name="getRoomNumList" description="获取房屋(添加商机)"/>-->
-                    <!--<include name="queryBOFirstSourceList" description="商机来源(添加商机)"/>-->
-                    <!--<include name="queryBOSecondSourceList" description="二级商机来源(添加商机)"/>-->
-                    <!--<include name="getKeeperByAndSourceType" description="确定(添加商机)"/>-->
-                    <!--<include name="appSearchBusOppByStandardInfo" description="提交一(添加商机)"/>-->
-                    <!--<include name="createBusOpp" description="提交二(添加商机)"/>-->
-                    <!--<include name="getClewTotalNumByStatus" description="提交三(添加商机)1111"/>-->
-                    <!--<include name="queryBOTotalList" description="提交四(添加商机)"/>-->
-                    <!--<include name="queryBOListByMyEntry" description="我的商机"/>-->
-                    <!--<include name="queryBOListByKeeper" description="待跟进"/>-->
-                    <!--<include name="queryHouseInfo" description="点击跟进商机"/>-->
-                    <!--<include name="getConfigInfo" description="新增跟进商机"/>-->
-                    <!--<include name="addTrackByKeeper" description="保存跟进商机"/>-->
-                    <!--<include name="queryBOListByKeeper1" description="首次跟进"/>-->
-                    <!--<include name="queryHouseInfo1" description="点击首次跟进"/>-->
-                    <!--<include name="getSurveyInfoByHouseId" description="点击首次跟进实勘"/>-->
-                    <!--<include name="submitHousePic" description="实勘上传照片"/>-->
-                    <!--<include name="saveSurvey" description="实勘上传照片"/>-->
-                    <!--<include name="commitSurvey" description="提交实勘信息"/>-->
-                    <!--<include name="getConfigInfo" description="新增跟进商机"/>-->
-                    <!--<include name="addTrackByKeeper" description="保存跟进商机"/>-->
-                    <!--<include name="queryHouseInfo" description="保存跟进商机返回查询"/>-->
-                    <!--&lt;!&ndash;<include name="cancelBo" description="核销商机" />&ndash;&gt;-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="testHarvestHouse">
+        <classes>
+            <class name="keeper.harvesthouse.HarvestHouse">
+                <methods>
+                    <include name="getDistrictList" description="获取城区列表(添加商机)"/>
+                    <include name="getVillageList" description="获取小区名字(添加商机)"/>
+                    <include name="getBuildNumList" description="获取楼栋(添加商机)"/>
+                    <include name="getUnitList" description="获取单元(添加商机)"/>
+                    <include name="getFloorList" description="获取楼层(添加商机)"/>
+                    <include name="getRoomNumList" description="获取房屋(添加商机)"/>
+                    <include name="queryBOFirstSourceList" description="商机来源(添加商机)"/>
+                    <include name="queryBOSecondSourceList" description="二级商机来源(添加商机)"/>
+                    <include name="getKeeperByAndSourceType" description="确定(添加商机)"/>
+                    <include name="appSearchBusOppByStandardInfo" description="提交一(添加商机)"/>
+                    <include name="createBusOpp" description="提交二(添加商机)"/>
+                    <include name="getClewTotalNumByStatus" description="提交三(添加商机)1111"/>
+                    <include name="queryBOTotalList" description="提交四(添加商机)"/>
+                    <include name="queryBOListByMyEntry" description="我的商机"/>
+                    <include name="queryBOListByKeeper" description="待跟进"/>
+                    <include name="queryHouseInfo" description="点击跟进商机"/>
+                    <include name="getConfigInfo" description="新增跟进商机"/>
+                    <include name="addTrackByKeeper" description="保存跟进商机"/>
+                    <include name="queryBOListByKeeper1" description="首次跟进"/>
+                    <include name="queryHouseInfo1" description="点击首次跟进"/>
+                    <include name="getSurveyInfoByHouseId" description="点击首次跟进实勘"/>
+                    <include name="submitHousePic" description="实勘上传照片"/>
+                    <include name="saveSurvey" description="实勘上传照片"/>
+                    <include name="commitSurvey" description="提交实勘信息"/>
+                    <include name="getConfigInfo" description="新增跟进商机"/>
+                    <include name="addTrackByKeeper" description="保存跟进商机"/>
+                    <include name="queryHouseInfo" description="保存跟进商机返回查询"/>
+                    <!--<include name="cancelBo" description="核销商机" />-->
+                </methods>
+            </class>
+        </classes>
+    </test>
 
 
-    <!--<test name="testValuationModle">-->
-        <!--<classes>-->
-            <!--<class name="keeper.ValuationModel.ValuationModleFZ">-->
-                <!--<methods>-->
-                    <!--<include name="testKeeperLogin" description="管家登录"/>-->
-                    <!--<include name="testMLogin" description="M站登录"/>-->
-                    <!--<include name="testGetHouseInfo" description="得到房源信息"/>-->
-                    <!--<include name="testCommitHouseInfo" description="提交房源信息"/>-->
-                    <!--<include name="testCommitRoomInfo" description="提交房间信息"/>-->
-                    <!--<include name="testCommitConfigInfo" description="提交公共区域配置"/>-->
-                    <!--<include name="testGetHirePrice" description="得到出房价"/>-->
-                    <!--<include name="testCommitAssessInfo" description="提交信息"/>-->
-                    <!--<include name="testAssessView" description="上报评估"/>-->
-                    <!--<include name="testAdmitAssess" description="保存"/>-->
-                    <!--&lt;!&ndash;<include name="testLogin" description="登录网站"/>&ndash;&gt;-->
-                    <!--&lt;!&ndash;<include name="testAdmitCancel" description="撤销计价模型"/>&ndash;&gt;-->
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-
-
-    <!--<test name="testZo">-->
-        <!--<classes>-->
-            <!--<class name="Zo.ZoHireHouseFlowManagerFZ">-->
-                <!--<methods>-->
-                    <!--<include name="testZoLogin" description="ZO登录"/>-->
-                    <!--<include name="testZoIndex" description="ZO首页"/>-->
-                    <!--<include name="testToHireNewSignPage" description="Zo添加合同"/>-->
-                    <!--<include name="testHireNewSign" description="获取计价模型"/>-->
-                    <!--<include name="testQueryCustomerInfo" description="获取业主信息"/>-->
-                    <!--<include name="testGetHouseAssessInfo" description="获取计价模型信息"/>-->
-                    <!--<include name="testSaveHireNewSignPage" description="保存"/>-->
-                    <!--<include name="testFindHireProperty" description="物业交割前点击确认"/>-->
-                    <!--<include name="testAddHreProperty" description="添加物业交割"/>-->
-                    <!--<include name="testGetHireContractCode" description="得到收房合同号"/>-->
-                    <!--<include name="testToHireNewSignPageFlow" description="修改接口"/>-->
-                    <!--<include name="testToHireBaseInfo" description="打开基础信息保存"/>-->
-                    <!--<include name="testSaveBaseInfo" description="保存基础信息保存"/>-->
-                    <!--<include name="testToHireHouseInfo" description="打开房源信息页面"/>-->
-                    <!--<include name="testSaveHouseInfo" description="保存房源信息"/>-->
-                    <!--<include name="testSaveRoomInfo" description="保存房间信息"/>-->
-                    <!--<include name="testSavePublicInfo" description="保存公共区域信息"/>-->
-                    <!--<include name="testSplitPage" description="跳转"/>-->
-                    <!--<include name="testToHirePeopleInfo" description="打开收房人信息"/>-->
-                    <!--<include name="testGetUsersList" description="得到管家号码"/>-->
-                    <!--<include name="testGetHigherLevel" description="得到管家的上级号码"/>-->
-                    <!--<include name="testGetManageInfo" description="从楼盘系统中获取所属管家"/>-->
-                    <!--<include name="testGetEhrDeptInfo" description="从EHR系统中获取所属管家的上级"/>-->
-                    <!--<include name="testSaveHirePeopleInfo" description="保存管家信息"/>-->
-                    <!--<include name="testToHirePaymentPlan" description="打开付款计划"/>-->
-                    <!--<include name="testPaymentPlan" description="保存付款计划"/>-->
-                    <!--<include name="testToHireSupplyAgreement" description="打开补充协议"/>-->
-                    <!--<include name="testCompileHire" description="提交审核"/>-->
-                    <!--&lt;!&ndash;<include name="testZoDataClear" description="清空ZO系统数据"/>&ndash;&gt;-->
-
-                <!--</methods>-->
-            <!--</class>-->
-        <!--</classes>-->
-    <!--</test>-->
-
-    <!--<test name="testAMS">-->
-        <!--<classes>-->
-            <!--<class name="Ams.AssetHireContractAuditFlow">-->
-                <!--<methods>-->
-                    <!--<include name="testLoginAsset" description="AMS登录"/>-->
-                    <!--<include name="testSelectCity" description="AMS选择城市"/>-->
-                    <!--<include name="testIndexAMS" description="AMS首页"/>-->
-                    <!--<include name="testGetResources" description="跳转到首页"/>-->
-                    <!--<include name="testHiredealReport" description="保存成交报告"/>-->
-                    <!--<include name="testListContractAudit" description="搜索合同"/>-->
-                    <!--<include name="testIndexHireContract" description="点击审核"/>-->
-                    <!--<include name="testIsUniqueForUpdateHireContract" description="点击审核通过"/>-->
-                    <!--<include name="testSaveContractAuditInfo" description="审核通过"/>-->
-                    <!--&lt;!&ndash;<include name="testAmsDataClear" description="AMS清除数据"/>&ndash;&gt;-->
-                <!--</methods>-->
-            <!--</class>-->
-
-        <!--</classes>-->
-    <!--</test>-->
-    <!--<test name="清除数据">-->
-        <!--<classes>-->
-            <!--&lt;!&ndash;<class name="Ams.AssetHireContractAuditFlow">&ndash;&gt;-->
-            <!--&lt;!&ndash;<methods>&ndash;&gt;-->
-            <!--&lt;!&ndash;<include name="testAmsDataClear" description="AMS清除数据"/>&ndash;&gt;-->
-            <!--&lt;!&ndash;</methods>&ndash;&gt;-->
-            <!--&lt;!&ndash;</class>&ndash;&gt;-->
-            <!--<class name="Zo.ZoHireHouseFlowManagerFZ">-->
-                <!--<methods>-->
-                    <!--<include name="testZoDataClear" description="清空ZO系统数据"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-            <!--<class name="keeper.ValuationModel.ValuationModleFZ">-->
-                <!--<methods>-->
+    <test name="testValuationModle">
+        <classes>
+            <class name="keeper.ValuationModel.ValuationModleFZ">
+                <methods>
+                    <include name="testKeeperLogin" description="管家登录"/>
+                    <include name="testMLogin" description="M站登录"/>
+                    <include name="testGetHouseInfo" description="得到房源信息"/>
+                    <include name="testCommitHouseInfo" description="提交房源信息"/>
+                    <include name="testCommitRoomInfo" description="提交房间信息"/>
+                    <include name="testCommitConfigInfo" description="提交公共区域配置"/>
+                    <include name="testGetHirePrice" description="得到出房价"/>
+                    <include name="testCommitAssessInfo" description="提交信息"/>
+                    <include name="testAssessView" description="上报评估"/>
+                    <include name="testAdmitAssess" description="保存"/>
                     <!--<include name="testLogin" description="登录网站"/>-->
                     <!--<include name="testAdmitCancel" description="撤销计价模型"/>-->
-                <!--</methods>-->
-            <!--</class>-->
-            <!--<class name="keeper.harvesthouse.HarvestHouse">-->
-                <!--<methods>-->
-                    <!--<include name="cancelBo" description="核销商机"/>-->
-                <!--</methods>-->
-            <!--</class>-->
+                </methods>
+            </class>
+        </classes>
+    </test>
 
-        <!--</classes>-->
-    <!--</test>-->
+
+    <test name="testZo">
+        <classes>
+            <class name="Zo.ZoHireHouseFlowManagerFZ">
+                <methods>
+                    <include name="testZoLogin" description="ZO登录"/>
+                    <include name="testZoIndex" description="ZO首页"/>
+                    <include name="testToHireNewSignPage" description="Zo添加合同"/>
+                    <include name="testHireNewSign" description="获取计价模型"/>
+                    <include name="testQueryCustomerInfo" description="获取业主信息"/>
+                    <include name="testGetHouseAssessInfo" description="获取计价模型信息"/>
+                    <include name="testSaveHireNewSignPage" description="保存"/>
+                    <include name="testFindHireProperty" description="物业交割前点击确认"/>
+                    <include name="testAddHreProperty" description="添加物业交割"/>
+                    <include name="testGetHireContractCode" description="得到收房合同号"/>
+                    <include name="testToHireNewSignPageFlow" description="修改接口"/>
+                    <include name="testToHireBaseInfo" description="打开基础信息保存"/>
+                    <include name="testSaveBaseInfo" description="保存基础信息保存"/>
+                    <include name="testToHireHouseInfo" description="打开房源信息页面"/>
+                    <include name="testSaveHouseInfo" description="保存房源信息"/>
+                    <include name="testSaveRoomInfo" description="保存房间信息"/>
+                    <include name="testSavePublicInfo" description="保存公共区域信息"/>
+                    <include name="testSplitPage" description="跳转"/>
+                    <include name="testToHirePeopleInfo" description="打开收房人信息"/>
+                    <include name="testGetUsersList" description="得到管家号码"/>
+                    <include name="testGetHigherLevel" description="得到管家的上级号码"/>
+                    <include name="testGetManageInfo" description="从楼盘系统中获取所属管家"/>
+                    <include name="testGetEhrDeptInfo" description="从EHR系统中获取所属管家的上级"/>
+                    <include name="testSaveHirePeopleInfo" description="保存管家信息"/>
+                    <include name="testToHirePaymentPlan" description="打开付款计划"/>
+                    <include name="testPaymentPlan" description="保存付款计划"/>
+                    <include name="testToHireSupplyAgreement" description="打开补充协议"/>
+                    <include name="testCompileHire" description="提交审核"/>
+                    <!--<include name="testZoDataClear" description="清空ZO系统数据"/>-->
+
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="testAMS">
+        <classes>
+            <class name="Ams.AssetHireContractAuditFlow">
+                <methods>
+                    <include name="testLoginAsset" description="AMS登录"/>
+                    <include name="testSelectCity" description="AMS选择城市"/>
+                    <include name="testIndexAMS" description="AMS首页"/>
+                    <include name="testGetResources" description="跳转到首页"/>
+                    <include name="testHiredealReport" description="保存成交报告"/>
+                    <include name="testListContractAudit" description="搜索合同"/>
+                    <include name="testIndexHireContract" description="点击审核"/>
+                    <include name="testIsUniqueForUpdateHireContract" description="点击审核通过"/>
+                    <include name="testSaveContractAuditInfo" description="审核通过"/>
+                    <!--<include name="testAmsDataClear" description="AMS清除数据"/>-->
+                </methods>
+            </class>
+
+        </classes>
+    </test>
+    <test name="清除数据">
+        <classes>
+            <!--<class name="Ams.AssetHireContractAuditFlow">-->
+            <!--<methods>-->
+            <!--<include name="testAmsDataClear" description="AMS清除数据"/>-->
+            <!--</methods>-->
+            <!--</class>-->
+            <class name="Zo.ZoHireHouseFlowManagerFZ">
+                <methods>
+                    <include name="testZoDataClear" description="清空ZO系统数据"/>
+                </methods>
+            </class>
+            <class name="keeper.ValuationModel.ValuationModleFZ">
+                <methods>
+                    <include name="testLogin" description="登录网站"/>
+                    <include name="testAdmitCancel" description="撤销计价模型"/>
+                </methods>
+            </class>
+            <class name="keeper.harvesthouse.HarvestHouse">
+                <methods>
+                    <include name="cancelBo" description="核销商机"/>
+                </methods>
+            </class>
+
+        </classes>
+    </test>
 
 </suite>

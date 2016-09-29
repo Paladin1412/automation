@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="收房业务">
+<suite name="收房业务整租">
 
     <test name="testLogin">
         <classes>
