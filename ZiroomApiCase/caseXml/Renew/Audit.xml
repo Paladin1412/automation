@@ -6,9 +6,11 @@
         <classes>
             <class name="interfacescript.audit.Audit">
                 <methods>
-                    <include name="testRunTimedJob" description="跑定时Job1"/>
+                    <!--<include name="testRunTimedJob" description="跑定时Job1"/>-->
                     <include name="testLogin" description="登录"/>
-                    <include name="testError" description="登录后页面管家信息"/>
+                    <include name="testNewSignList" description="获取新签管理列表"/>
+                    <include name="testNewSignDetail" description="获取新签_合同详情"/>
+
                 </methods>
             </class>
 

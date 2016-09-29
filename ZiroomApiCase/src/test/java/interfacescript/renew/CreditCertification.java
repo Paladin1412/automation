@@ -2,11 +2,11 @@ package interfacescript.renew;
 
 import com.ziroom.utils.PropertiesUtil;
 import com.ziroom.utils.ProviderDataSource;
-import config.PropertyConstants;
 import keeper.appScript.Keeper_CreditCertification;
 import keeper.confManagement.commonMethods.HttpRequest;
 import keeper.confManagement.commonMethods.KeeperGlobalParas;
 import keeper.confManagement.commonMethods.RenewFunCommon;
+import keeper.confManagement.config.PropertyConstants;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
