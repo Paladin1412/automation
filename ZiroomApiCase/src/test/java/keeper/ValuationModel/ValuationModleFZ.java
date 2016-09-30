@@ -47,9 +47,9 @@ public class ValuationModleFZ {
     public void init_config() {
 
         KeeperGlobalParas.ehrJson = ehr.ehrUserInfoFlow(KeeperGlobalParas.rentHouseUserAccount);
-        System.out.println("~~~~" + KeeperGlobalParas.ehrJson);
-        vmc.getUserInfo(KeeperGlobalParas.ehrJson);
-        vmc.initViewJson(KeeperGlobalParas.viewJsonFZ);
+//        System.out.println("~~~~" + KeeperGlobalParas.ehrJson);
+//        vmc.getUserInfo(KeeperGlobalParas.ehrJson);
+//        vmc.initViewJson(KeeperGlobalParas.viewJsonFZ);
 
 
     }
@@ -89,7 +89,6 @@ public class ValuationModleFZ {
 //        System.out.println("httpUrl" + httpUrl);
 
         Reporter.log("请求地址:" + httpUrl);
-        logV.info(httpUrl);
 
         String mlogin = vmc.mLogin(httpUrl);
 

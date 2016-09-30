@@ -127,14 +127,15 @@ public class Keeper_ValuationModelCommon {
 
 		Document returnValue = Jsoup.parse(response.get("returnValue"));
 		String title = returnValue.title();
-
 		String responseJson = response.toString();
 
 		logger.info(httpUrl);
 		logger.info(jsobj.toString());
 		logger.info(responseJson.toString());
 		Reporter.log(map.toString());
-		Reporter.log(returnValue.toString());
+		Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+		String status = returnStatusCode.body().text();
+		Reporter.log("returnStatusCode : " + status);
 
 		if (title.equals("引导页 - 计价模型")){
 			logger.info("s_getRenewContractInfo返回值" + returnValue);
@@ -559,7 +560,9 @@ public class Keeper_ValuationModelCommon {
 		JSONObject actual = JSONObject.fromObject(response.get("returnValue"));
 		actual.put("url", httpUrl);
 		Reporter.log(httpUrl);
-		Reporter.log(actual.toString());
+		Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+		String status = returnStatusCode.body().text();
+		Reporter.log("returnStatusCode : " + status);
 		logger.info(httpUrl);
 		logger.info(actual.toString());
 		return actual;

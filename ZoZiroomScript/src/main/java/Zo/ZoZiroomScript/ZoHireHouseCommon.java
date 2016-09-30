@@ -91,11 +91,12 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         Element ele = returnValue.getElementById("queryBusOppList");
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
         logger.info(httpUrl);
         logger.info(jsobj.toString());
         logger.info(response.toString());
@@ -124,12 +125,13 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         Element ele = returnValue.getElementById("firstMenu_0");
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
         logger.info(httpUrl);
         logger.info(jsobj.toString());
         logger.info(response.toString());
@@ -153,11 +155,12 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpGetRequest(httpUrl);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         Element ele = returnValue.getElementById("form");
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         //生成测试报告
         Reporter.log(httpUrl);
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
         logger.info(httpUrl);
         logger.info(response.toString());
 
@@ -749,14 +752,15 @@ public class ZoHireHouseCommon {
         // JSONObject.fromObject(response.get("returnValue"));
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         String ele = returnValue.title();
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         logger.info(jsobj.toString());
         logger.info(response.toString());
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
 
         if (!ele.equals(null) || !ele.equals("")) {
@@ -787,14 +791,15 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         String ele = returnValue.title();
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         logger.info(jsobj.toString());
         logger.info(response.toString());
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
 
         if (!ele.equals(null) || !ele.equals("")) {
@@ -879,7 +884,6 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         String ele = returnValue.title();
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         logger.info(httpUrl);
         logger.info(jsobj.toString());
@@ -887,7 +891,9 @@ public class ZoHireHouseCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
 
         if (!ele.equals(null) || !ele.equals("")) {
@@ -1287,7 +1293,6 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         String ele = returnValue.title();
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         logger.info(httpUrl);
         logger.info(jsobj.toString());
@@ -1295,7 +1300,9 @@ public class ZoHireHouseCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (ele.equals("新签-收房人信息")) {
             logger.info("toHireBaseInfo返回值" + response);
@@ -1603,7 +1610,6 @@ public class ZoHireHouseCommon {
         // 请求接口返回值
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         String ele = returnValue.title();
         logger.info(jsobj.toString());
@@ -1611,7 +1617,9 @@ public class ZoHireHouseCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (ele.equals("新签-付款计划")) {
             logger.info("toHirePaymentPlan返回值" + response);
@@ -1640,14 +1648,15 @@ public class ZoHireHouseCommon {
         Map<String, String> response = hcu.httpPostRequest(httpUrl, jsobj);
         Document returnValue = Jsoup.parse(response.get("returnValue"));
         String ele = returnValue.title();
-        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
 
         logger.info(jsobj.toString());
         logger.info(response.toString());
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnStatusCode.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         boolean flag = false;
         if (ele.equals("新签-补充协议")) {

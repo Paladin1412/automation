@@ -171,8 +171,9 @@ public class AssetHireContractAuditCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(doc.toString());
-
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
 
         if (title.contains("资产管理系统")) {
@@ -250,8 +251,9 @@ public class AssetHireContractAuditCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnValue);
-
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (returnValue.contains("操作成功！")) {
             logger.info("hiredealReport返回值" + returnValue);
@@ -287,8 +289,9 @@ public class AssetHireContractAuditCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnValue);
-
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (returnValue.contains(AmsGlobalParas.contractCode)) {
             logger.info("listContractAudit返回值" + returnValue);
@@ -329,8 +332,9 @@ public class AssetHireContractAuditCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(doc.toString());
-
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (ele.text().contains("出租合同录入")) {
             logger.info("indexHireContract返回值" + response);
