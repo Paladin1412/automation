@@ -12,6 +12,13 @@
     <artifactId>AmsScript</artifactId>
     <packaging>jar</packaging>
 
+    <dependencies>
+        <dependency>
+            <groupId>module</groupId>
+            <artifactId>ZiroomInterface</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
     <build>
         <resources>
             <resource>

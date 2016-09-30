@@ -8,6 +8,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>jar</packaging>
 
     <artifactId>ZiroomApiCase</artifactId>
 
@@ -58,7 +59,7 @@
                 <version>2.7.1</version>
                 <configuration>
                     <suiteXmlFiles>
-                         <!--<suiteXmlFile>caseXml/harvestmodule/FlowFZ.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>caseXml/harvestmodule/FlowFZ.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>caseXml/zrpd/init.xml</suiteXmlFile>-->
                         <!--<suiteXmlFile>caseXml/zrpd/ConfigFlowManage.xml</suiteXmlFile>-->
                         <!--  <suiteXmlFile>caseXml/harvesthouse/HarvestHouse.xml</suiteXmlFile> -->
@@ -69,8 +70,8 @@
                         <!--<suiteXmlFile>${JR_NewSign}</suiteXmlFile> &lt;!&ndash; 合租新签 &ndash;&gt;-->
                         <!--<suiteXmlFile>${WR_NewSign}</suiteXmlFile>  &lt;!&ndash; 整租新签 &ndash;&gt;-->
                         <!--<suiteXmlFile>${newSignDelivery}</suiteXmlFile>     &lt;!&ndash; 物业交割 &ndash;&gt;-->
-                        <suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile><!-- 收房模块分租 -->
-                        <suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile><!-- 收房模块整租 -->
+                        <!--<suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile>&lt;!&ndash; 收房模块分租 &ndash;&gt;-->
+                        <!--<suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile>&lt;!&ndash; 收房模块整租 &ndash;&gt;-->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

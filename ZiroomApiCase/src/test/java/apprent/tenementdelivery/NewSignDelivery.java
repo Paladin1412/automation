@@ -13,8 +13,8 @@ import com.ziroom.utils.ProviderDataSource;
 
 import config.PropertyConstants;
 import net.sf.json.JSONObject;
-import ziroom.appScript.S_TenementDelivery;
-import ziroom.confManagement.commonMethods.RentAppGlobalParas;
+import com.ziroom.appScript.S_TenementDelivery;
+import com.ziroom.confManagement.commonMethods.RentAppGlobalParas;
 
 /****
  * 扫码二维码新签物业交割用例

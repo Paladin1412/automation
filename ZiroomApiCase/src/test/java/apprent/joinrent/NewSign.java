@@ -1,5 +1,7 @@
 package apprent.joinrent;
 
+import com.ziroom.confManagement.commonMethods.HttpRequest;
+import com.ziroom.confManagement.commonMethods.RentAppGlobalParas;
 import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -10,11 +12,10 @@ import com.ziroom.utils.ProviderDataSource;
 
 import config.PropertyConstants;
 import net.sf.json.JSONObject;
-import ziroom.appScript.CommonApiParas;
-import ziroom.appScript.S_FindHouse;
-import ziroom.appScript.S_Me;
-import ziroom.appScript.S_NewSign;
-import ziroom.confManagement.commonMethods.*;
+import com.ziroom.appScript.CommonApiParas;
+import com.ziroom.appScript.S_FindHouse;
+import com.ziroom.appScript.S_Me;
+import com.ziroom.appScript.S_NewSign;
 
 public class NewSign {
 

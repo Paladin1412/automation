@@ -47,9 +47,9 @@ public class ValuationModleFZ {
     public void init_config() {
 
         KeeperGlobalParas.ehrJson = ehr.ehrUserInfoFlow(KeeperGlobalParas.rentHouseUserAccount);
-//        System.out.println("~~~~" + KeeperGlobalParas.ehrJson);
-//        vmc.getUserInfo(KeeperGlobalParas.ehrJson);
-//        vmc.initViewJson(KeeperGlobalParas.viewJsonFZ);
+        System.out.println("~~~~" + KeeperGlobalParas.ehrJson);
+        vmc.getUserInfo(KeeperGlobalParas.ehrJson);
+        vmc.initViewJson(KeeperGlobalParas.viewJsonFZ);
 
 
     }

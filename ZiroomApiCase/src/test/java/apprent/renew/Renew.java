@@ -9,11 +9,11 @@ import org.apache.log4j.Logger;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import ziroom.appScript.S_Me;
-import ziroom.appScript.S_NewSign;
+import com.ziroom.appScript.S_Me;
+import com.ziroom.appScript.S_NewSign;
 
-import ziroom.appScript.S_Renew;
-import ziroom.confManagement.commonMethods.RentAppGlobalParas;
+import com.ziroom.appScript.S_Renew;
+import com.ziroom.confManagement.commonMethods.RentAppGlobalParas;
  
 
 /**
