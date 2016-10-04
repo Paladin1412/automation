@@ -70,8 +70,8 @@
                         <!--<suiteXmlFile>${JR_NewSign}</suiteXmlFile> &lt;!&ndash; 合租新签 &ndash;&gt;-->
                         <!--<suiteXmlFile>${WR_NewSign}</suiteXmlFile>  &lt;!&ndash; 整租新签 &ndash;&gt;-->
                         <!--<suiteXmlFile>${newSignDelivery}</suiteXmlFile>     &lt;!&ndash; 物业交割 &ndash;&gt;-->
-                        <!--<suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile>&lt;!&ndash; 收房模块分租 &ndash;&gt;-->
-                        <!--<suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile>&lt;!&ndash; 收房模块整租 &ndash;&gt;-->
+                        <suiteXmlFile>${HarvestFlowFZ}</suiteXmlFile><!-- 收房模块分租 -->
+                        <suiteXmlFile>${HarvestFlowZZ}</suiteXmlFile><!-- 收房模块整租 -->
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
