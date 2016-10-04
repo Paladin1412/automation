@@ -1,5 +1,6 @@
 package keeper.appScript;
 
+import com.ziroom.confManagement.commonMethods.RentAppGlobalParas;
 import com.ziroom.utils.CommonFunction;
 import keeper.confManagement.commonMethods.HttpRequest;
 import keeper.confManagement.commonMethods.KeeperGlobalParas;
@@ -7,7 +8,6 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.apache.log4j.Logger;
 import org.testng.Reporter;
-import ziroom.confManagement.commonMethods.RentAppGlobalParas;
 
 import java.util.HashMap;
 import java.util.Map;
