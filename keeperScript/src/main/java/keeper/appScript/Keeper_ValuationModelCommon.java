@@ -520,7 +520,9 @@ public class Keeper_ValuationModelCommon {
 
 		String responseJson = response.toString();
 		Reporter.log(httpUrl);
-		Reporter.log(responseJson);
+		Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+		String status = returnStatusCode.body().text();
+		Reporter.log("returnStatusCode : " + status);
 		logger.info(httpUrl);
 		logger.info(response);
 

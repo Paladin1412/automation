@@ -64,7 +64,9 @@ public class AssetHireContractAuditCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnValue.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (ele.attr("value").equals("确认")) {
             logger.info("loginAsset返回值" + returnValue);
@@ -108,7 +110,9 @@ public class AssetHireContractAuditCommon {
         //生成测试报告
         Reporter.log(httpUrl);
         Reporter.log(jsobj.toString());
-        Reporter.log(returnValue.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (returnValue.contains("/AMS")) {
             logger.info("loginAsset返回值" + returnValue);
@@ -136,7 +140,9 @@ public class AssetHireContractAuditCommon {
         logger.info(response.toString());
         //生成测试报告
         Reporter.log(httpUrl);
-        Reporter.log(doc.toString());
+        Document returnStatusCode = Jsoup.parse(response.get("returnStatusCode"));
+        String status = returnStatusCode.body().text();
+        Reporter.log("returnStatusCode : " + status);
 
         if (title.contains("资产管理系统")) {
             logger.info("indexAMS返回值" + response);
